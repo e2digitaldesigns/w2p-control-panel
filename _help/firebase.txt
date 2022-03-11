@@ -1,0 +1,26 @@
+https://blog.logrocket.com/user-authentication-firebase-react-apps/
+
+https://github.com/atharvadeosthale/firebase-auth-article
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCqG8XHL_b-mUAWw6U0puCD-WOu7kvSebg",
+  authDomain: "web-2-print-oauth.firebaseapp.com",
+  databaseURL: "https://web-2-print-oauth-default-rtdb.firebaseio.com",
+  projectId: "web-2-print-oauth",
+  storageBucket: "web-2-print-oauth.appspot.com",
+  messagingSenderId: "9211214812",
+  appId: "1:9211214812:web:20eab3f964810694d76d19",
+  measurementId: "G-3D3W46XQSC"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

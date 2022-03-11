@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "001",
+    "type": "login",
+    "timestamp": 1645999990224,
+    "company": "Work First",
+    "user": "Marcus Grahmm"
+  },
+  {
+    "_id": "002",
+    "type": "login",
+    "timestamp": 1645999990224,
+    "company": "Darkside",
+    "user": "Anakin Skywalker"
+  },
+  {
+    "_id": "003",
+    "type": "login",
+    "timestamp": 1645999990224,
+    "company": "The Def Squad",
+    "user": "Reggie Noble"
+  },
+  {
+    "_id": "004",
+    "type": "login",
+    "timestamp": 1645999990224,
+    "company": "Work First",
+    "user": "Marcus Grahmm"
+  },
+  {
+    "_id": "006",
+    "type": "login",
+    "timestamp": 1645999990224,
+    "company": "Darkside",
+    "user": "Anakin Skywalker"
+  },
+  {
+    "_id": "007",
+    "type": "login",
+    "timestamp": 1645999990224,
+    "company": "The Def Squad",
+    "user": "Reggie Noble"
+  }
+]
