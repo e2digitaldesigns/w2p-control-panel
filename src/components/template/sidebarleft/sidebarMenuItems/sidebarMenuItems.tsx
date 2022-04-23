@@ -5,7 +5,9 @@ import { ChevronLeft, Power } from "react-feather";
 import * as Styled from "./sidebarMenuItems.style";
 import { sidebarMenuData } from "./sidebarMenuData";
 import { useTemplate } from "../../../../hooks";
-import { logout } from "../../../../utils/firebase/firebase";
+import { removeToken } from "./../../../../utils/token/token";
+import SidebarNormalMenuItems from "./normalItems";
+import { IntMenuItem } from "./../../../../types";
 
 const SidebarMenuItems: React.FC = () => {
   const navigate = useNavigate();
@@ -13,31 +15,16 @@ const SidebarMenuItems: React.FC = () => {
   const isMenuVisible = templateState.sidebarMenuLeft.isVisible;
 
   const handleLogout = () => {
-    // logout();
-    navigate("/sign-out");
+    console.log(18, "xxxxx xxxxxx");
+    removeToken();
+    navigate("/login");
   };
 
   return (
     <>
-      {_map(sidebarMenuData, (menuItem, index) => (
-        <Link key={index} to={menuItem.url}>
-          <Styled.SidebarMenuItem showMenuLeft={isMenuVisible}>
-            <div>
-              <menuItem.icon />
-            </div>
-
-            {isMenuVisible && (
-              <>
-                <div> {menuItem.name}</div>
-                <div>
-                  <ChevronLeft />
-                </div>
-              </>
-            )}
-          </Styled.SidebarMenuItem>
-        </Link>
+      {_map(sidebarMenuData, (menuItem: IntMenuItem, index: number) => (
+        <SidebarNormalMenuItems key={index} menuItem={menuItem} />
       ))}
-
       <Styled.SidebarMenuItemFooter showMenuLeft={isMenuVisible}>
         <div>
           <Power />
@@ -51,7 +38,7 @@ const SidebarMenuItems: React.FC = () => {
             </div>
           </>
         )}
-      </Styled.SidebarMenuItemFooter>
+      </Styled.SidebarMenuItemFooter>{" "}
     </>
   );
 };

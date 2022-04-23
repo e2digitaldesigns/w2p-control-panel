@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: grid;
   width: 100vw;
   grid-template-columns: 14.375rem 20rem auto;

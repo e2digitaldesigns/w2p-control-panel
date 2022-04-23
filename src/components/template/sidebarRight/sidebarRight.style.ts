@@ -7,7 +7,7 @@ export const SidebarRightWrapper = styled.div`
   grid-template-rows: 3.125rem auto;
 `;
 
-export const SidebarRightMenu = styled.div`
+export const SidebarRightMenu = styled.nav`
   height: 3.125rem;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -54,18 +54,24 @@ export const SidebarRightMenuItem = styled.div<IntSidebarRightMenuItem>`
   }
 `;
 
-export const NumCount = styled.div`
+interface IntNumCount {
+  amount?: number;
+}
+
+export const NumCount = styled.div<IntNumCount>`
   display: flex;
   position: absolute;
-  width: 1rem;
-  height: 1rem;
+  width: 1.125rem;
+  height: 1.125rem;
   border-radius: 50%;
   top: 0.25rem;
   right: 0.25rem;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 0.75rem;
+  font-size: 0.625rem;
+  opacity: ${props => (props.amount ? 1 : 0)};
+  transition: opacity 0.5s;
   background: ${props => props.theme.colors.iconColorHover1};
 `;
 

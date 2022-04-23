@@ -1,5 +1,5 @@
 import * as React from "react";
-import { format } from "timeago.js";
+import TimeAgo from "timeago-react";
 import { LogIn } from "react-feather";
 import _map from "lodash/map";
 import * as Styled from "./activityFeed.style";
@@ -11,9 +11,9 @@ const TypeObj: any = {
 
 const ActivityFeed: React.FC = () => {
   return (
-    <Styled.ActivityWrapper>
+    <Styled.ActivityWrapper role="list">
       {_map(data, (act, index) => (
-        <Styled.ActivityIndy key={index}>
+        <Styled.ActivityIndy key={index} role="listitem">
           <Styled.ActivityIcon>
             <LogIn />
           </Styled.ActivityIcon>
@@ -21,7 +21,9 @@ const ActivityFeed: React.FC = () => {
           <div>
             <Styled.ActivityHeader>
               <div>{act.user}</div>
-              <div>{format(act.timestamp, "en_US")}</div>
+              <div>
+                <TimeAgo datetime={act.timestamp} />
+              </div>
             </Styled.ActivityHeader>
             <Styled.ActivityText>{TypeObj[act.type].text}</Styled.ActivityText>
           </div>

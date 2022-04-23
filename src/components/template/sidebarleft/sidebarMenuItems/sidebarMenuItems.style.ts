@@ -24,6 +24,10 @@ export const SidebarMenuItem = styled.div<IntSidebarMenuItem>`
     }
   }
 
+  &:focus {
+    background-color: purple;
+  }
+
   > div {
     text-align: center;
     &:nth-child(2) {

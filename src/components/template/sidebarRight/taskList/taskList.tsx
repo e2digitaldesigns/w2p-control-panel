@@ -1,42 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { format } from "timeago.js";
+import TimeAgo from "timeago-react";
 import { Check, Trash } from "react-feather";
-import _cloneDeep from "lodash/cloneDeep";
-import _filter from "lodash/filter";
 import _map from "lodash/map";
-import _replace from "lodash/replace";
 import * as Styled from "./taskList.style";
 
-import { IntTask } from "../../../../types/index";
+import { IntTask } from "../../../../types";
 import { useTaskList } from "../../../../hooks";
+import TaskListItem from "./taskListItem";
 
 const ToDoList: React.FC = () => {
   const [toDoItems, setToDoItems] = useState<IntTask[]>([]);
   const [taskText, setTaskText] = useState<string>("");
 
-  const { createTask, getTasks, removeTask, updateTask } = useTaskList();
+  const { createTask, useGetTasks, removeTask, updateTask, unCompleteTasks } =
+    useTaskList();
+  const { isLoading, data } = useGetTasks();
 
   useEffect(() => {
     let stillHere = true;
 
-    const fetchData = async () => {
-      try {
-        const data = await getTasks();
-
-        if (stillHere) {
-          setToDoItems(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
+    if (!isLoading && stillHere && data) {
+      unCompleteTasks(data);
+      if (data) setToDoItems(data);
+    }
 
     return () => {
-      stillHere = true;
+      stillHere = false;
     };
-  }, []);
+  }, [isLoading, data]);
 
   const handleIsChecked = async (index: number): Promise<void> => {
     try {
@@ -72,32 +63,30 @@ const ToDoList: React.FC = () => {
 
   return (
     <Styled.ToDoWrapper>
-      <Styled.ToDoItems>
+      <Styled.ToDoItems role="list">
         {_map(toDoItems, (item, index: number) => (
-          <Styled.ToDoItem key={item._id} isChecked={item.isComplete}>
-            <div>{item.isComplete && <Check />}</div>
-
-            <div onClick={() => handleIsChecked(index)}>
-              <Styled.ToDoItemText>{item.text}</Styled.ToDoItemText>
-
-              <Styled.ToDoItemTime>
-                {format(item.timestamp, "en_US")}
-              </Styled.ToDoItemTime>
-            </div>
-            <div onClick={() => handleRemoveItem(item._id)}>
-              <Trash />
-            </div>
-          </Styled.ToDoItem>
+          <TaskListItem
+            handleIsChecked={handleIsChecked}
+            handleRemoveItem={handleRemoveItem}
+            key={item._id}
+            index={index}
+            item={item}
+          />
         ))}
       </Styled.ToDoItems>
 
-      <Styled.ToDoForm>
+      <Styled.ToDoForm role="form" aria-label="Add a task">
         <div>
-          <Styled.Textarea onChange={handleOnChange} value={taskText} />
+          <Styled.Textarea
+            aria-label="New Task Message"
+            id="exampleFormControlTextarea1"
+            onChange={handleOnChange}
+            value={taskText}
+          />
         </div>
 
         <Styled.AddButton disabled={!taskText} onClick={handleAddItem}>
-          Add
+          Submit New Task Item
         </Styled.AddButton>
       </Styled.ToDoForm>
     </Styled.ToDoWrapper>

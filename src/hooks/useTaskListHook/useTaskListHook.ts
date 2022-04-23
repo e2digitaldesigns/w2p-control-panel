@@ -1,15 +1,16 @@
-import axios from "axios";
 import _cloneDeep from "lodash/cloneDeep";
 import _filter from "lodash/filter";
 import _size from "lodash/size";
 import _sortBy from "lodash/sortBy";
-import shortid from "shortid";
 
 import { useTemplate } from "../../hooks/";
 
-import { IntTask } from "../../types";
+import { Endpoints, IntTask, QueryKeys } from "../../types";
+import http from "../../utils/httpService/httpService";
+import { AxiosError } from "axios";
+import { useQuery, UseQueryResult } from "react-query";
 
-type GetTasksFn = () => Promise<IntTask[]>;
+type UseGetTasksFn = () => any;
 
 type CreateTaskFn = (
   items: IntTask[],
@@ -26,48 +27,48 @@ type RemoveTaskFn = (
   _id: string
 ) => Promise<IntTask[] | undefined>;
 
-type IntUnCompleteTaskFn = (data: IntTask[]) => void;
+type IntUnCompleteTasksFn = (data: IntTask[]) => void;
 
 export interface IntUseTodoListHooks {
-  getTasks: GetTasksFn;
   createTask: CreateTaskFn;
+  useGetTasks: UseGetTasksFn;
   updateTask: UpdateTaskFn;
   removeTask: RemoveTaskFn;
-  unCompleteTask: IntUnCompleteTaskFn;
+  unCompleteTasks: IntUnCompleteTasksFn;
 }
 
 const useTodoListHooks = (): IntUseTodoListHooks => {
-  const END_POINT = "http://localhost:3001/api/v1/todo";
+  const END_POINT = Endpoints.Tasks;
   const { templateState, setTemplateState } = useTemplate();
 
   const createTask: CreateTaskFn = async (data, taskText) => {
     const items = _cloneDeep(data);
 
     const newItem: IntTask = {
-      _id: shortid.generate(),
       isComplete: false,
       text: taskText,
       timestamp: Date.now().toString()
     };
 
     try {
-      await axios.post(END_POINT, newItem);
-      items.push(newItem);
-      unCompleteTask(items);
+      const { data } = await http.post(END_POINT, { taskObj: newItem });
+      delete data.__v;
+      items.push(data);
+      unCompleteTasks(items);
       return _sortBy(items, "timestamp");
     } catch (error) {
       return undefined;
     }
   };
 
-  const getTasks: GetTasksFn = async () => {
-    try {
-      const { data } = await axios.get(END_POINT);
-      unCompleteTask(data.Items);
-      return data.Items;
-    } catch (error) {
-      return [];
-    }
+  const useGetTasks: UseGetTasksFn = (): UseQueryResult => {
+    return useQuery<IntTask[], AxiosError>(
+      QueryKeys.Task,
+      async (): Promise<IntTask[]> => http.get(END_POINT).then(res => res.data),
+      {
+        staleTime: 30 * 1000
+      }
+    );
   };
 
   const updateTask: UpdateTaskFn = async (data, index) => {
@@ -75,8 +76,8 @@ const useTodoListHooks = (): IntUseTodoListHooks => {
       const items = _cloneDeep(data);
       const item = items[index];
       items[index].isComplete = !items[index].isComplete;
-      await axios.put(`${END_POINT}/${item._id}`, item);
-      unCompleteTask(items);
+      await http.put(`${END_POINT}/${item._id}`, { updateObj: item });
+      unCompleteTasks(items);
       return items;
     } catch (error) {
       return undefined;
@@ -85,16 +86,16 @@ const useTodoListHooks = (): IntUseTodoListHooks => {
 
   const removeTask: RemoveTaskFn = async (data, _id) => {
     try {
-      await axios.delete(`${END_POINT}/${_id}`);
+      await http.delete(`${END_POINT}/${_id}`);
       const filtered = _filter(data, (f: IntTask) => f._id !== _id);
-      unCompleteTask(filtered);
+      unCompleteTasks(filtered);
       return filtered;
     } catch (error) {
       return undefined;
     }
   };
 
-  const unCompleteTask: IntUnCompleteTaskFn = data => {
+  const unCompleteTasks: IntUnCompleteTasksFn = data => {
     const taskNum = _size(
       _filter(data, (task: IntTask) => task.isComplete === false)
     );
@@ -102,15 +103,16 @@ const useTodoListHooks = (): IntUseTodoListHooks => {
     const newTemplateState = _cloneDeep(templateState);
     newTemplateState.sidebarMenuRight.unCompletedTasks =
       taskNum > 100 ? 99 : taskNum;
+
     setTemplateState(newTemplateState);
   };
 
   return {
     createTask,
-    getTasks,
+    useGetTasks,
     updateTask,
     removeTask,
-    unCompleteTask
+    unCompleteTasks
   };
 };
 

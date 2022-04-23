@@ -4,10 +4,13 @@ export const theme = {
       height: "3.125rem",
       width: "100vw"
     },
+    sidebarLeft: {
+      width: { normal: "14.375rem", collaspe: "3.125rem" }
+    },
     sidebarRight: {
-      width: "20rem",
+      width: "15rem",
       headerHeight: "2.5rem",
-      footerHeight: "100px",
+      footerHeight: "6.25rem",
       footerHeights: "7.8125rem"
     }
   },

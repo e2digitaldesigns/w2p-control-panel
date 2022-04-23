@@ -6,6 +6,7 @@ export const templateDefaultState: IntTemplateContext = {
     isVisible: true
   },
   sidebarMenuRight: {
+    isVisible: true,
     currentSection: "",
     unCompletedTasks: 0
   }

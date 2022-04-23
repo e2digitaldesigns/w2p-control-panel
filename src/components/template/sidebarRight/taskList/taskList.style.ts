@@ -87,7 +87,7 @@ export const ToDoForm = styled.div`
 `;
 
 export const Textarea = styled.textarea`
-  border: 0.0625em solid ${props => props.theme.colors.borderColor};
+  border: 0.0625rem solid ${props => props.theme.colors.borderColor};
   overflow: auto;
   outline: none;
   box-shadow: none;
@@ -99,10 +99,10 @@ export const Textarea = styled.textarea`
 `;
 
 export const AddButton = styled.button`
-  border: 0.0625em solid ${props => props.theme.colors.borderColor};
+  border: 0.0625rem solid ${props => props.theme.colors.borderColor};
   background: ${props => props.theme.colors.greyC};
-  overflow: auto;
+  overflow: hidden;
   outline: none;
   padding: 0.125rem;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
 `;

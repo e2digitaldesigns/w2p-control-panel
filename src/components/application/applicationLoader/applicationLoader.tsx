@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ApplicationWrapper from "../applicationWrapper/applicationWrapper";
+import ApplicationRouter from "../applicationRouter/applicationRouter";
+// import ApplicationWrapper from "../applicationWrapper/applicationWrapper";
 // import * as Styled from "./applicationloader.styles";
 
 interface IntApplicationloader {}
@@ -11,13 +12,7 @@ const Applicationloader: React.FC<IntApplicationloader> = () => {
     //TODO: Get user information here
   }, []);
 
-  return <ApplicationWrapper />;
-
-  return (
-    <>
-      <h1>Applicationloader</h1>
-    </>
-  );
+  return <ApplicationRouter />;
 };
 
 export default Applicationloader;

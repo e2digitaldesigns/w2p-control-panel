@@ -24,8 +24,6 @@ const SidebarRight: React.FC = () => {
     setActivePanel(panel);
   };
 
-  console.log(templateState);
-
   const sidebarObj = [
     {
       component: <ActivityFeed />,
@@ -57,7 +55,11 @@ const SidebarRight: React.FC = () => {
 
   return (
     <Styled.SidebarRightWrapper data-testid="sidebar-right-wrapper">
-      <Styled.SidebarRightMenu data-testid="sidebar-right-menu">
+      <Styled.SidebarRightMenu
+        aria-label="Right side bar menu"
+        data-testid="sidebar-right-menu"
+        role="navigation"
+      >
         {_map(sidebarObj, (item: any, index) => (
           <Styled.SidebarRightMenuItem
             isCounter={item?.isCounter}
@@ -66,11 +68,9 @@ const SidebarRight: React.FC = () => {
             isActive={activePanel === index}
             onClick={() => handleActivePanel(index)}
           >
-            {item?.isCounter && (
-              <>
-                <Styled.NumCount>{item.isCounter}</Styled.NumCount>
-              </>
-            )}
+            <Styled.NumCount amount={item.isCounter || 0}>
+              {item.isCounter}
+            </Styled.NumCount>
             {item.icon}
           </Styled.SidebarRightMenuItem>
         ))}

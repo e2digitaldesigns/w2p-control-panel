@@ -3,6 +3,7 @@ export interface IntSidebarMenuLeft {
 }
 
 export interface IntSidebarMenuRight {
+  isVisible: boolean;
   currentSection: string;
   unCompletedTasks: number;
 }

@@ -16,7 +16,10 @@ const TemplateHeaderBranding: React.FC = () => {
   return (
     <Styled.Branding>
       <div onClick={handleMenuToggle}>
-        <Menu />
+        <Menu
+          aria-expanded={templateState.sidebarMenuLeft.isVisible}
+          aria-label="Toggle navigation"
+        />
       </div>
       <div>E2 Print Software</div>
     </Styled.Branding>

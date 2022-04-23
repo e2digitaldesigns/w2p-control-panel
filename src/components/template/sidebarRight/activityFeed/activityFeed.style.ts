@@ -9,7 +9,7 @@ export const ActivityIndy = styled.div`
   /* min-height: 2rem; */
   width: 100%;
   display: grid;
-  grid-template-columns: 2.25rem auto;
+  grid-template-columns: 2rem auto;
   border-bottom: 0.0625rem solid ${props => props.theme.colors.borderColor};
   padding: 0.375rem 0.75rem 0.375rem 0.5rem;
 `;
@@ -23,10 +23,9 @@ export const ActivityIcon = styled.div`
   justify-content: center;
   border-radius: 50%;
   text-transform: uppercase;
-  font-size: 0.875rem;
   > svg {
-    width: 1rem;
-    height: 1rem;
+    width: 0.875rem;
+    height: 0.875rem;
     color: ${props => props.theme.colors.iconColor};
   }
 `;
@@ -43,11 +42,12 @@ export const ActivityHeader = styled.div`
   }
 
   > div:nth-child(2) {
-    font-size: 0.675rem;
+    font-size: 0.625rem;
     text-align: right;
   }
 `;
 
 export const ActivityText = styled.div`
+  padding-top: 0.25rem;
   font-size: 0.75rem;
 `;
