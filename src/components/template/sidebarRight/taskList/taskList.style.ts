@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ScrollBars } from "../../../../theme/scrollDiv/scrollDiv";
 
 export const ToDoWrapper = styled.div`
   height: 100%;
@@ -8,7 +9,7 @@ export const ToDoWrapper = styled.div`
     ${props => props.theme.sizes.sidebarRight.footerHeight};
 `;
 
-export const ToDoItems = styled.div`
+export const ToDoItems = styled(ScrollBars)`
   height: 100%;
   overflow-y: scroll;
 `;

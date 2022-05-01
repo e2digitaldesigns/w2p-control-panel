@@ -9,16 +9,14 @@ export const ScrollBars = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background: #1f1f1f;
-    border-top: 0.0625em solid ${props => props.theme.colors.accent1};
+    background: ${props => props.theme.colors.greyD};
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #373737;
+    background: ${props => props.theme.colors.greyC};
     min-height: 2rem;
-    border-bottom: 0.0625em solid ${props => props.theme.colors.accent1};
     &:hover {
-      background: #404040;
+      background: ${props => props.theme.colors.greyB};
     }
   }
 `;
