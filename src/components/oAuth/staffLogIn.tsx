@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { getUserDataFromToken, setToken } from "../../utils/token/token";
+import { useToken } from "../../hooks";
 import http from "../../utils/httpService/httpService";
 import { Endpoints, Routes } from "../../types";
 import { TUserJWTToken } from "./../../types/index";
 
 const StaffLogin: React.FC = () => {
+  const { getUserDataFromToken, setToken } = useToken();
   const [email, setEmail] = useState("test@testing.com");
   const [password, setPassword] = useState("password");
   const navigate = useNavigate();

@@ -1,9 +1,9 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import { getToken } from "../../../utils/token/token";
+import { useToken } from "../../../hooks";
 
-const getAuth = (): any => {
+const getAuth = (getToken: () => string | null): boolean => {
   let loggedIn = false;
 
   try {
@@ -26,7 +26,9 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
   to
 }) => {
-  if (getAuth()) {
+  const { getToken } = useToken();
+
+  if (getAuth(getToken)) {
     return children;
   }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import jwtDecode from "jwt-decode";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { theme } from "./theme/theme";
 import * as Styled from "./App.style";
@@ -23,12 +23,12 @@ import {
 
 import { IntTemplateContext, IntSystemContext, IntUserContext } from "./types";
 
-import { useGetStorefront } from "./hooks";
-import { getToken } from "./utils/token/token";
+import { useGetStorefront, useToken } from "./hooks";
 import ApplicationRouter from "./components/application/applicationRouter/applicationRouter";
 
 const Starter: React.FC = () => {
   const navigate = useNavigate();
+  const { getToken } = useToken();
   const [isStoreLoaded, setIsStoreLoaded] = useState<boolean>(false);
   const { isLoading, error, data: systemData } = useGetStorefront();
 

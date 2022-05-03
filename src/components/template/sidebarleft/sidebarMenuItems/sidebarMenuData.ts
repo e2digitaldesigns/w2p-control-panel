@@ -10,10 +10,12 @@ import {
 import { IntMenuItem, Routes } from "./../../../../types";
 
 export const sidebarMenuData: IntMenuItem[] = [
-  { url: "/console/dashboard", icon: List, name: "Dashboard" },
+  { url: Routes.ConsoleDashboard, icon: List, name: "Dashboard" },
   { url: Routes.PageMgt, icon: FileText, name: "Page Management" },
-  { url: "/console/2", icon: Layers, name: "Product Management" },
-  { url: "/console/3", icon: Users, name: "User Management" },
-  { url: "/console/4", icon: ShoppingCart, name: "Order Management" },
-  { url: "/console/5", icon: HardDrive, name: "Supplier Management" }
+  { url: Routes.ProductMgt, icon: Layers, name: "Product Management" },
+  { url: Routes.UserMgt, icon: Users, name: "User Management" },
+  { url: Routes.OrderMgt, icon: ShoppingCart, name: "Order Management" },
+  { url: Routes.SupplierMgt, icon: HardDrive, name: "Supplier Management" },
+  { url: Routes.SupplierMgt, icon: HardDrive, name: "System Settings" },
+  { url: Routes.SupplierMgt, icon: HardDrive, name: "Template Settings" }
 ];

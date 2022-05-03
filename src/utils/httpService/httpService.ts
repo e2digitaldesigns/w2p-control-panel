@@ -1,8 +1,16 @@
 import axios from "axios";
-import { getToken } from "../token/token";
+
+const getTheToken = () => {
+  const isBrowser = !!(typeof window !== "undefined" && window.localStorage);
+  let domain = isBrowser ? window.location.hostname : null;
+  domain = domain ? domain.replace(/(https?:\/\/)?(www.)?/i, "") : null;
+  const tokenKey = domain ? `@${domain}/local` : null;
+  if (isBrowser && tokenKey) return window.localStorage.getItem(tokenKey);
+  return null;
+};
 
 const http = axios.create({
-  baseURL: "http://localhost:8001/api",
+  baseURL: process.env.REACT_APP_REST_API,
   timeout: 10000,
   headers: {
     Accept: "application/json",
@@ -12,7 +20,7 @@ const http = axios.create({
 });
 
 http.interceptors.request.use((config: any) => {
-  const token = getToken();
+  const token = getTheToken();
   if (token) config.headers.authorization = `Bearer ${token}`;
   return config;
 });

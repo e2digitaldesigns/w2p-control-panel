@@ -49,7 +49,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "startX": "react-scripts start",
+    "start": "set PUBLIC_URL=console&&set HOST=e2ps.com&&set PORT=3000&&react-scripts start",
     "build": "react-scripts build",
     "dev": "electron .",
     "test": "react-scripts test --coverage",

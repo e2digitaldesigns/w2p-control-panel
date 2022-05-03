@@ -7,14 +7,15 @@ import {
   UserCheck
 } from "react-feather";
 import _cloneDeep from "lodash/cloneDeep";
-import { useTemplate } from "../../../../hooks";
-import { getUserDataFromToken } from "../../../../utils/token/token";
+import { useTemplate, useToken } from "../../../../hooks";
+
 import * as Styled from "./links.style";
 import { TUserJWTToken } from "./../../../../types";
 
 const TemplateHeaderBreadLinks: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const { templateState, setTemplateState } = useTemplate();
+  const { getUserDataFromToken } = useToken();
 
   useEffect(() => {
     async function setTheUsername() {

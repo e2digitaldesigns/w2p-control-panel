@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Outlet, Routes as Switch, Route } from "react-router-dom";
+import { Routes as Switch, Route } from "react-router-dom";
 import _map from "lodash/map";
 import _range from "lodash/range";
-import Reset from "../../oAuth/reset";
 
 import StaffLogin from "../../oAuth/staffLogIn";
 import Console from "../../console/console";
@@ -10,6 +9,7 @@ import Console from "../../console/console";
 import { ProtectedRoute } from "./protectedRoute";
 
 import { Routes } from "./../../../types";
+import PageManagement from "../pageManagement/pageManagement";
 // useParams
 const ApplicationRouter: React.FC = () => {
   return (
@@ -35,14 +35,7 @@ const ApplicationRouter: React.FC = () => {
         <Route path={Routes.Dashboard} element={<h1>Dashboard</h1>} />
         <Route path="*" element={<h1>Console Page Not Found</h1>} />
 
-        <Route
-          path={Routes.PageMgt}
-          element={
-            <>
-              <h1>page mgt header</h1> <Outlet />{" "}
-            </>
-          }
-        >
+        <Route path={Routes.PageMgt} element={<PageManagement />}>
           <Route path={Routes.PageMgtList} element={<h1>page mgt list</h1>} />
 
           <Route path={Routes.PageMgtNew} element={<h1>page mgt new</h1>} />
@@ -58,7 +51,6 @@ const ApplicationRouter: React.FC = () => {
 
       <Route path="login" element={<StaffLogin />} />
       <Route path="/" element={<StaffLogin />} />
-      <Route path="/reset" element={<Reset />} />
     </Switch>
   );
 };

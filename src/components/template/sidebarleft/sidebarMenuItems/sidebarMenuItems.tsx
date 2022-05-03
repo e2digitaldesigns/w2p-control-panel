@@ -4,18 +4,17 @@ import _map from "lodash/map";
 import { ChevronLeft, Power } from "react-feather";
 import * as Styled from "./sidebarMenuItems.style";
 import { sidebarMenuData } from "./sidebarMenuData";
-import { useTemplate } from "../../../../hooks";
-import { removeToken } from "./../../../../utils/token/token";
+import { useTemplate, useToken } from "../../../../hooks";
 import SidebarNormalMenuItems from "./normalItems";
 import { IntMenuItem } from "./../../../../types";
 
 const SidebarMenuItems: React.FC = () => {
+  const { removeToken } = useToken();
   const navigate = useNavigate();
   const { templateState } = useTemplate();
   const isMenuVisible = templateState.sidebarMenuLeft.isVisible;
 
   const handleLogout = () => {
-    console.log(18, "xxxxx xxxxxx");
     removeToken();
     navigate("/login");
   };

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import TimeAgo from "timeago-react";
-import { Check, Trash } from "react-feather";
 import _map from "lodash/map";
 import * as Styled from "./taskList.style";
 
@@ -16,18 +14,24 @@ const ToDoList: React.FC = () => {
     useTaskList();
   const { isLoading, data } = useGetTasks();
 
+  const unCompleteTasksCB = React.useCallback(
+    data => unCompleteTasks(data),
+    [data]
+  );
+
   useEffect(() => {
+    console.log(18);
     let stillHere = true;
 
     if (!isLoading && stillHere && data) {
-      unCompleteTasks(data);
+      unCompleteTasksCB(data);
       if (data) setToDoItems(data);
     }
 
     return () => {
       stillHere = false;
     };
-  }, [isLoading, data]);
+  }, [isLoading, data, unCompleteTasksCB]);
 
   const handleIsChecked = async (index: number): Promise<void> => {
     try {
@@ -79,7 +83,6 @@ const ToDoList: React.FC = () => {
         <div>
           <Styled.Textarea
             aria-label="New Task Message"
-            id="exampleFormControlTextarea1"
             onChange={handleOnChange}
             value={taskText}
           />

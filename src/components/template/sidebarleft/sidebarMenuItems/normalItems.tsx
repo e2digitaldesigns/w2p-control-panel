@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { ChevronLeft } from "react-feather";
 import * as Styled from "./sidebarMenuItems.style";
-import { useTemplate } from "../../../../hooks";
+import { usePermission, useTemplate } from "../../../../hooks";
 import { IntMenuItem } from "./../../../../types";
 
 interface IntSidebarNormalMenuItems {
@@ -12,8 +12,12 @@ interface IntSidebarNormalMenuItems {
 const SidebarNormalMenuItems: React.FC<IntSidebarNormalMenuItems> = ({
   menuItem
 }) => {
+  const { useCanAccess } = usePermission();
   const { templateState } = useTemplate();
   const isMenuVisible = templateState.sidebarMenuLeft.isVisible;
+  const canAccess = useCanAccess(menuItem.url);
+
+  if (!canAccess) return null;
 
   return (
     <Link to={menuItem.url}>
