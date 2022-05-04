@@ -26,9 +26,11 @@ const usePermissionHook = (): IntUsePermissionHook => {
       const location = useLocation();
       const token = getToken();
 
-      if (
-        location.pathname === Routes.ConsoleDashboard ||
-        url === Routes.ConsoleDashboard
+      if (url === Routes.ConsoleDashboard) {
+        return true;
+      } else if (
+        url === Routes.ConsoleDashboard &&
+        location.pathname === Routes.ConsoleDashboard
       ) {
         return true;
       }
@@ -44,7 +46,14 @@ const usePermissionHook = (): IntUsePermissionHook => {
       ] as keyof IntUserJWTTokenPermissions;
 
       const data: TUserJWTToken = token ? jwtDecode(token) : null;
-      return data?.permissions?.[key] ? data.permissions[key] : false;
+      const permission = data?.permissions?.[key]
+        ? data.permissions[key]
+        : false;
+
+      console.log(49, { url, index, permission });
+      // token && console.log(51, jwtDecode(token));
+
+      return permission;
     } catch (error) {
       return false;
     }
