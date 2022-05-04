@@ -2,6 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { useToken } from "../../../hooks";
+import { ApplicationRoutes } from "../../../types";
 
 const getAuth = (getToken: () => string | null): boolean => {
   let loggedIn = false;
@@ -32,5 +33,5 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
     return children;
   }
 
-  return <Navigate to={to || "/login"} replace />;
+  return <Navigate to={to || ApplicationRoutes.Login} replace />;
 };

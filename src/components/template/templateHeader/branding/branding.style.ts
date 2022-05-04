@@ -15,11 +15,11 @@ export const Branding = styled.div`
     justify-content: center;
 
     &:first-child {
-      color: ${props => props.theme.colors.iconColor};
-      border-right: 0.0625rem solid ${props => props.theme.colors.borderColor};
+      color: ${props => props.theme.default.icon.color};
+      border-right: 0.0625rem solid ${props => props.theme.default.borderColor};
 
       &:hover {
-        color: ${props => props.theme.colors.iconColorHover};
+        color: ${props => props.theme.default.icon.hover};
         cursor: pointer;
       }
     }

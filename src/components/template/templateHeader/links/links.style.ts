@@ -10,8 +10,12 @@ export const HeaderLinks = styled.div`
   svg {
     width: 1.125rem;
     height: 1.125rem;
-    color: ${props => props.theme.colors.iconColor};
+    color: ${props => props.theme.default.icon.color};
     cursor: pointer;
+
+    &:hover {
+      color: ${props => props.theme.default.icon.hover};
+    }
   }
 `;
 
@@ -19,8 +23,8 @@ export const UserInitials = styled.div`
   display: flex;
   width: 1.75rem;
   height: 1.75rem;
-  background: ${props => props.theme.colors.grey3};
-  color: white;
+  background: ${props => props.theme.header.initials.bg};
+  color: ${props => props.theme.header.initials.font};
   align-items: center;
   justify-content: center;
   border-radius: 50%;
@@ -33,5 +37,5 @@ export const Hamburger = styled.div`
   height: 100%;
   align-items: center;
   justify-content: center;
-  border-left: 0.0625rem solid ${props => props.theme.colors.borderColor};
+  border-left: 0.0625rem solid ${props => props.theme.default.borderColor};
 `;

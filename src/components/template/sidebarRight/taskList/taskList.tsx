@@ -20,7 +20,6 @@ const ToDoList: React.FC = () => {
   );
 
   useEffect(() => {
-    console.log(18);
     let stillHere = true;
 
     if (!isLoading && stillHere && data) {

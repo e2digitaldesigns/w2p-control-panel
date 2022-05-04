@@ -7,6 +7,7 @@ export const ToDoWrapper = styled.div`
   grid-template-rows:
     auto
     ${props => props.theme.sizes.sidebarRight.footerHeight};
+  background-color: ${props => props.theme.taskList.bg};
 `;
 
 export const ToDoItems = styled(ScrollBars)`
@@ -21,7 +22,7 @@ export const ToDoItem = styled.div<IntToDoItem>`
   display: grid;
   grid-template-columns: 2rem auto 1.5rem;
   cursor: pointer;
-  background: #eee;
+  background-color: ${props => props.theme.taskList.item.bg};
   transition: 0.2s;
   /* user-select: none; */
   align-content: center;
@@ -35,32 +36,32 @@ export const ToDoItem = styled.div<IntToDoItem>`
     &:nth-child(3) {
       text-align: center;
       &:hover {
-        color: white;
-        background: red;
+        color: ${props => props.theme.taskList.item.hover.del.font};
+        background-color: ${props => props.theme.taskList.item.hover.del.bg};
         > svg {
-          color: white;
+          color: ${props => props.theme.taskList.item.hover.del.icon};
         }
       }
     }
     > svg {
       height: 0.75rem;
       width: 0.75rem;
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.default.icon.color};
     }
   }
 
   &:nth-child(odd) {
-    background: #f9f9f9;
+    background-color: ${props => props.theme.taskList.item.oddBg};
   }
 
   text-decoration: ${props => (props.isChecked ? "line-through" : "none")};
 
   &:hover {
-    background: #ddd;
+    background-color: ${props => props.theme.taskList.item.hover.bg};
     > div > svg {
       height: 0.75rem;
       width: 0.75rem;
-      color: ${props => props.theme.colors.iconColorHover1};
+      color: ${props => props.theme.taskList.item.hover.font};
     }
   }
 `;
@@ -83,12 +84,13 @@ export const ToDoForm = styled.div`
   grid-gap: 0.25rem;
   grid-template-rows: 3fr 1fr;
   padding: 0.25rem;
-  border-top: 0.0625em solid ${props => props.theme.colors.borderColor};
+  border-top: 0.0625em solid ${props => props.theme.default.borderColor};
   height: 100%;
 `;
 
 export const Textarea = styled.textarea`
-  border: 0.0625rem solid ${props => props.theme.colors.borderColor};
+  border: 0.0625rem solid ${props => props.theme.default.borderColor};
+  background: ${props => props.theme.taskList.form.textArea.bg};
   overflow: auto;
   outline: none;
   box-shadow: none;
@@ -100,8 +102,8 @@ export const Textarea = styled.textarea`
 `;
 
 export const AddButton = styled.button`
-  border: 0.0625rem solid ${props => props.theme.colors.borderColor};
-  background: ${props => props.theme.colors.greyC};
+  border: 0.0625rem solid ${props => props.theme.default.borderColor};
+  background: ${props => props.theme.taskList.form.addButton.bg};
   overflow: hidden;
   outline: none;
   padding: 0.125rem;

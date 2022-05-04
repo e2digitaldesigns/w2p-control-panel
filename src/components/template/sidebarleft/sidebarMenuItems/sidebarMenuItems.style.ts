@@ -11,16 +11,16 @@ export const SidebarMenuItem = styled.div<IntSidebarMenuItem>`
 
   height: 3.125rem;
   width: 100%;
-  border-bottom: 0.0625rem solid ${props => props.theme.colors.borderColor};
+  border-bottom: 0.0625rem solid ${props => props.theme.default.borderColor};
   align-items: center;
-  background-color: ${props => props.theme.colors.bg.main};
+  background-color: ${props => props.theme.default.bg};
   font-size: 0.875rem;
   transition: 0.25s;
 
   &:hover {
-    background-color: ${props => props.theme.colors.bg.hover1};
+    background-color: ${props => props.theme.sidebarLeft.items.hover.bg};
     > div > svg:first-child {
-      color: ${props => props.theme.colors.iconColorHover1};
+      color: ${props => props.theme.sidebarLeft.items.hover.icon};
     }
   }
 
@@ -37,7 +37,7 @@ export const SidebarMenuItem = styled.div<IntSidebarMenuItem>`
     > svg {
       width: 1.125rem;
       height: 1.125rem;
-      color: ${props => props.theme.colors.iconColor};
+      color: ${props => props.theme.default.icon.color};
     }
   }
 `;
@@ -46,6 +46,6 @@ export const SidebarMenuItemFooter = styled(SidebarMenuItem)`
   position: absolute;
   bottom: 0px;
 
-  border-top: 0.0625rem solid ${props => props.theme.colors.borderColor};
+  border-top: 0.0625rem solid ${props => props.theme.default.borderColor};
   border-bottom: none;
 `;
