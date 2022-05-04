@@ -8,7 +8,13 @@ export interface IntSidebarMenuRight {
   unCompletedTasks: number;
 }
 
+export enum IntTemplateThemeNames {
+  Light = "lightTheme",
+  Dark = "darkTheme"
+}
+
 export interface IntTemplateContext {
+  theme: IntTemplateThemeNames;
   sidebarMenuLeft: IntSidebarMenuLeft;
   sidebarMenuRight: IntSidebarMenuRight;
 }

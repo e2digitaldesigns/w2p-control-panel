@@ -50,9 +50,6 @@ const usePermissionHook = (): IntUsePermissionHook => {
         ? data.permissions[key]
         : false;
 
-      console.log(49, { url, index, permission });
-      // token && console.log(51, jwtDecode(token));
-
       return permission;
     } catch (error) {
       return false;

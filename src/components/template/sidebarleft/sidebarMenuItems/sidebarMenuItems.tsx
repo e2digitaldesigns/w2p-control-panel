@@ -6,7 +6,7 @@ import * as Styled from "./sidebarMenuItems.style";
 import { sidebarMenuData } from "./sidebarMenuData";
 import { useTemplate, useToken } from "../../../../hooks";
 import SidebarNormalMenuItems from "./normalItems";
-import { IntMenuItem } from "./../../../../types";
+import { ApplicationRoutes, IntMenuItem } from "./../../../../types";
 
 const SidebarMenuItems: React.FC = () => {
   const { removeToken } = useToken();
@@ -16,7 +16,7 @@ const SidebarMenuItems: React.FC = () => {
 
   const handleLogout = () => {
     removeToken();
-    navigate("/login");
+    navigate(ApplicationRoutes.Login);
   };
 
   return (

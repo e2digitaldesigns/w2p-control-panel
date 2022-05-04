@@ -1,5 +1,5 @@
 import React from "react";
-import { SystemContext } from "./systemContext";
+import { SystemContext } from "../../context/systemContext/systemContext";
 import { IntSystemContextState } from "../../types";
 
 const useSystemData = () => {

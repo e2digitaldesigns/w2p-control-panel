@@ -19,7 +19,7 @@ export const ConsoleDiv = styled.div<IntApplicationWrapper>`
     ${props =>
       props.showMenuRight ? props.theme.sizes.sidebarRight.width : 0};
 
-  background-color: ${props => props.theme.colors.bg.main};
+  background-color: ${props => props.theme.default.bg};
 `;
 
 export const OutletDiv = styled.div`

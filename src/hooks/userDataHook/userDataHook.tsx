@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "./userContext";
+import { UserContext } from "../../context";
 import { IntUserContextState } from "../../types";
 
 const useUserData = () => {
