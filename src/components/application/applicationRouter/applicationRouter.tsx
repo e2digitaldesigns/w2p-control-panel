@@ -8,7 +8,7 @@ import Console from "../../console/console";
 
 import { ProtectedRoute } from "./protectedRoute";
 
-import { Routes } from "./../../../types";
+import { ApplicationRoutes } from "./../../../types";
 import PageManagement from "../pageManagement/pageManagement";
 // useParams
 const ApplicationRouter: React.FC = () => {
@@ -32,16 +32,25 @@ const ApplicationRouter: React.FC = () => {
           />
         ))}
 
-        <Route path={Routes.Dashboard} element={<h1>Dashboard</h1>} />
+        <Route
+          path={ApplicationRoutes.Dashboard}
+          element={<h1>Dashboard</h1>}
+        />
         <Route path="*" element={<h1>Console Page Not Found</h1>} />
 
-        <Route path={Routes.PageMgt} element={<PageManagement />}>
-          <Route path={Routes.PageMgtList} element={<h1>page mgt list</h1>} />
-
-          <Route path={Routes.PageMgtNew} element={<h1>page mgt new</h1>} />
+        <Route path={ApplicationRoutes.PageMgt} element={<PageManagement />}>
+          <Route
+            path={ApplicationRoutes.PageMgtList}
+            element={<h1>page mgt list</h1>}
+          />
 
           <Route
-            path={Routes.PageMgtProfile}
+            path={ApplicationRoutes.PageMgtNew}
+            element={<h1>page mgt new</h1>}
+          />
+
+          <Route
+            path={ApplicationRoutes.PageMgtProfile}
             element={<h1>page mgt profile</h1>}
           />
         </Route>

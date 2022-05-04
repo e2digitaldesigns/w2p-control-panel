@@ -1,4 +1,4 @@
-export enum Routes {
+export enum ApplicationRoutes {
   ConsoleDashboard = "/console/dashboard",
   Login = "/login",
   Password = "/reset",

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useToken } from "../../hooks";
 import http from "../../utils/httpService/httpService";
-import { Endpoints, Routes } from "../../types";
+import { Endpoints, ApplicationRoutes } from "../../types";
 import { TUserJWTToken } from "./../../types/index";
 
 const StaffLogin: React.FC = () => {
@@ -15,7 +15,7 @@ const StaffLogin: React.FC = () => {
     async function checkUserLoginStatus() {
       try {
         const userData: TUserJWTToken = await getUserDataFromToken();
-        userData && navigate(Routes.ConsoleDashboard);
+        userData && navigate(ApplicationRoutes.ConsoleDashboard);
       } catch (error) {
         console.error(20, error);
       }
@@ -32,7 +32,7 @@ const StaffLogin: React.FC = () => {
       });
 
       data?.token && setToken(data.token);
-      navigate(Routes.ConsoleDashboard);
+      navigate(ApplicationRoutes.ConsoleDashboard);
     } catch (error) {
       console.error(error);
     }

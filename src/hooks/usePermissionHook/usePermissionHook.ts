@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 import {
   IntUserJWTTokenPermissions,
   RoutePermissionSplit,
-  Routes,
+  ApplicationRoutes,
   RoutesPermissionKeys,
   TUserJWTToken
 } from "../../types";
@@ -26,11 +26,11 @@ const usePermissionHook = (): IntUsePermissionHook => {
       const location = useLocation();
       const token = getToken();
 
-      if (url === Routes.ConsoleDashboard) {
+      if (url === ApplicationRoutes.ConsoleDashboard) {
         return true;
       } else if (
-        url === Routes.ConsoleDashboard &&
-        location.pathname === Routes.ConsoleDashboard
+        url === ApplicationRoutes.ConsoleDashboard &&
+        location.pathname === ApplicationRoutes.ConsoleDashboard
       ) {
         return true;
       }

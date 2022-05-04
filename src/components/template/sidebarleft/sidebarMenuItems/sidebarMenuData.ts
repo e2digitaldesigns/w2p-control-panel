@@ -7,15 +7,35 @@ import {
   Users
 } from "react-feather";
 
-import { IntMenuItem, Routes } from "./../../../../types";
+import { IntMenuItem, ApplicationRoutes } from "./../../../../types";
 
 export const sidebarMenuData: IntMenuItem[] = [
-  { url: Routes.ConsoleDashboard, icon: List, name: "Dashboard" },
-  { url: Routes.PageMgt, icon: FileText, name: "Page Management" },
-  { url: Routes.ProductMgt, icon: Layers, name: "Product Management" },
-  { url: Routes.UserMgt, icon: Users, name: "User Management" },
-  { url: Routes.OrderMgt, icon: ShoppingCart, name: "Order Management" },
-  { url: Routes.SupplierMgt, icon: HardDrive, name: "Supplier Management" },
-  { url: Routes.SupplierMgt, icon: HardDrive, name: "System Settings" },
-  { url: Routes.SupplierMgt, icon: HardDrive, name: "Template Settings" }
+  { url: ApplicationRoutes.ConsoleDashboard, icon: List, name: "Dashboard" },
+  { url: ApplicationRoutes.PageMgt, icon: FileText, name: "Page Management" },
+  {
+    url: ApplicationRoutes.ProductMgt,
+    icon: Layers,
+    name: "Product Management"
+  },
+  { url: ApplicationRoutes.UserMgt, icon: Users, name: "User Management" },
+  {
+    url: ApplicationRoutes.OrderMgt,
+    icon: ShoppingCart,
+    name: "Order Management"
+  },
+  {
+    url: ApplicationRoutes.SupplierMgt,
+    icon: HardDrive,
+    name: "Supplier Management"
+  },
+  {
+    url: ApplicationRoutes.SupplierMgt,
+    icon: HardDrive,
+    name: "System Settings"
+  },
+  {
+    url: ApplicationRoutes.SupplierMgt,
+    icon: HardDrive,
+    name: "Template Settings"
+  }
 ];
