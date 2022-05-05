@@ -1,5 +1,5 @@
 import React from "react";
-import { TemplateContext } from "../../context/templateContext";
+import { TemplateContext } from "../../context";
 import { IntTemplateContextState } from "./../../types";
 
 const useTemplateData = () => {
