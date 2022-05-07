@@ -23,5 +23,5 @@ export const ConsoleDiv = styled.div<IntApplicationWrapper>`
 `;
 
 export const OutletDiv = styled.div`
-  padding: 0.625rem;
+  /* padding: 0.625rem; */
 `;
