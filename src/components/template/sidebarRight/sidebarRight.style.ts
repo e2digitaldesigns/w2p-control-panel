@@ -43,8 +43,7 @@ export const SidebarRightMenuItem = styled.div<IntSidebarRightMenuItem>`
   }
 
   &:hover {
-    background-color: ${props =>
-      !props.isActive && props.theme.default.icon.hover};
+    background-color: ${props => !props.isActive && "white"};
     > svg:first-child {
       color: ${props => !props.isActive && props.theme.default.icon.color};
     }
@@ -84,7 +83,8 @@ const slideInAnimation = keyframes`
 
 const slideOutAnimation = keyframes`
 0% { left: 0px }
-100% { left: -100% }`;
+50% {  opacity: .55; }
+100% { left: -100%;  }`;
 
 interface IntSidebarScrollerPanel {
   isActive: boolean;

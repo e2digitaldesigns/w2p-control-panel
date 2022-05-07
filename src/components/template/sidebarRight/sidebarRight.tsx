@@ -11,13 +11,14 @@ import * as Styled from "./sidebarRight.style";
 import { useTemplate } from "../../../hooks";
 import ActivityFeed from "./activityFeed/activityFeed";
 import TaskList from "./taskList/taskList";
+import StaffSettings from "./staffSettings/staffSettings";
 
 const BlankPanel: React.FC<{ index: number }> = ({ index }) => (
   <h1>blank {index}</h1>
 );
 
 const SidebarRight: React.FC = () => {
-  const [activePanel, setActivePanel] = useState<number>(1);
+  const [activePanel, setActivePanel] = useState<number>(2);
   const { templateState } = useTemplate();
 
   const handleActivePanel = (panel: number): void => {
@@ -37,7 +38,7 @@ const SidebarRight: React.FC = () => {
       isCounter: templateState?.sidebarMenuRight?.unCompletedTasks || 0
     },
     {
-      component: <BlankPanel index={2} />,
+      component: <StaffSettings />,
       icon: <Settings />,
       tag: "settings"
     },

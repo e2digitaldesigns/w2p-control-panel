@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { ScrollBars } from "../../../../theme/scrollDiv/scrollDiv";
 
-export const ActivityWrapper = styled.div`
+export const ActivityWrapper = styled(ScrollBars)`
   height: 100%;
   width: 100%;
 `;
