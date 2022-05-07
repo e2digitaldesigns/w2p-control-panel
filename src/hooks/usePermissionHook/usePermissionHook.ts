@@ -38,7 +38,7 @@ const usePermissionHook = (): IntUsePermissionHook => {
       let path: string = _split(
         url || location.pathname,
         RoutePermissionSplit
-      )[1];
+      )[2];
 
       const index = Object.keys(RoutesPermissionKeys).indexOf(path);
       const key = Object.values(RoutesPermissionKeys)[

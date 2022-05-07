@@ -30,7 +30,7 @@ export enum ApplicationRoutes {
   SupplierMgtProfile = "/console/supplier-management/:id"
 }
 
-export const RoutePermissionSplit = "/console/";
+export const RoutePermissionSplit = "/";
 
 export enum RoutesPermissionKeys {
   "client-management" = "clientManagement",

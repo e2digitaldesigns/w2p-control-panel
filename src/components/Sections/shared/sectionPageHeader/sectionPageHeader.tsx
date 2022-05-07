@@ -1,26 +1,39 @@
 import * as React from "react";
 import * as Styled from "./sectionPageHeader.style";
-import { Button } from "../../../../paper";
+import { Link } from "react-router-dom";
+import { useBreadCrumbs } from "../../../../hooks";
 
 interface IntSectionPageHeader {
-  sectionTitle: string;
+  sectionTitle?: string;
+  subTitle?: string;
+  linkTo?: string;
+  linkText?: string;
 }
 
 const SectionPageHeader: React.FC<IntSectionPageHeader> = ({
-  sectionTitle
+  sectionTitle,
+  subTitle,
+  linkTo,
+  linkText
 }) => {
+  const { getBreadCrumbs, getPageHeader } = useBreadCrumbs();
+
   return (
     <>
       <Styled.SectionPageHeader>
         <div>
-          <Styled.Crumbs>Express Layouts / Page Management</Styled.Crumbs>
-          <Styled.Header>{sectionTitle}</Styled.Header>
-          <Styled.SubTitle>Create and Modify Pages</Styled.SubTitle>
+          <Styled.Crumbs>{getBreadCrumbs()}</Styled.Crumbs>
+          <Styled.Header>{sectionTitle || getPageHeader()}</Styled.Header>
+          {subTitle && <Styled.SubTitle>{subTitle}</Styled.SubTitle>}
         </div>
 
-        <Styled.Action>
-          <Button>New Page</Button>
-        </Styled.Action>
+        {linkTo && linkText && (
+          <Styled.Action>
+            <Link to={linkTo}>
+              <Styled.ActionButton>{linkText}</Styled.ActionButton>
+            </Link>
+          </Styled.Action>
+        )}
       </Styled.SectionPageHeader>
     </>
   );

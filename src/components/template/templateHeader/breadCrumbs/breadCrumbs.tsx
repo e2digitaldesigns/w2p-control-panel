@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
+import _map from "lodash/map";
 import _startCase from "lodash/startCase";
 import _replace from "lodash/replace";
 import _split from "lodash/split";
@@ -13,9 +14,17 @@ const TemplateHeaderBreadCrumbs: React.FC = () => {
   const location = useLocation();
 
   const setBreadCrumbs = () => {
-    let crumb;
     const path = _split(location.pathname, "/");
-    crumb = path[2] && _startCase(_replace(path[2], "-", " "));
+    let crumb = "",
+      spacer = "";
+
+    _map(path, (part, index) => {
+      if (part && index > 1) {
+        spacer = index > 2 ? " / " : "";
+        crumb += spacer + _startCase(_replace(part, "-", " "));
+      }
+    });
+
     return crumb;
   };
 
