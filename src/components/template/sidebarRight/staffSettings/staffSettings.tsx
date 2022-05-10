@@ -8,8 +8,8 @@ import StaffSettingHeader from "./utils/staffSettingHeader";
 const StaffSettings: React.FC = () => {
   const [staffSettings, setStaffSettings] = useState<any>({
     audioNotifications: true,
-    toastNotifications: true,
-    shoppingCart: true,
+    toastNotifications: false,
+    shoppingCart: false,
     completedOrder: true,
     newClient: true,
     clientLogin: true,

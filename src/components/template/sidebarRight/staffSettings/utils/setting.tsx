@@ -18,14 +18,14 @@ const Setting: React.FC<IntSettings> = ({
     <Styled.Setting>
       <div>{name}</div>
       <div>
-        <Styled.CheckBox onClick={() => toggleSetting(stateKey)}>
-          <Styled.Checking
+        <Styled.SwitchWrapper onClick={() => toggleSetting(stateKey)}>
+          <Styled.Switch
             type="checkbox"
             checked={isChecked}
-            onChange={() => console.log(1)}
+            onChange={() => null}
           />
           <Styled.Slider></Styled.Slider>
-        </Styled.CheckBox>
+        </Styled.SwitchWrapper>
       </div>
     </Styled.Setting>
   );

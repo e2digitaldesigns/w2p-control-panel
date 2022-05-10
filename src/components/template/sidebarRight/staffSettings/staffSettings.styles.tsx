@@ -9,8 +9,8 @@ export const StaffSettingsWrapper = styled(ScrollBars)`
 export const Setting = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-bottom: 1px dotted #ccc;
-  padding: 12px 8px;
+  border-bottom: 0.0625rem dotted ${props => props.theme.default.borderColor};
+  padding: 0.75rem 0.5rem;
   width: 100%;
   font-size: 0.875rem;
   height: 2.5rem;
@@ -20,11 +20,11 @@ export const Setting = styled.div`
   }
 `;
 
-export const CheckBox = styled.div`
+export const SwitchWrapper = styled.div`
   position: relative;
   display: inline-block;
-  width: 40px;
-  height: 18px;
+  width: 1.875rem;
+  height: 1.125rem;
 
   input {
     opacity: 0;
@@ -40,37 +40,39 @@ export const Slider = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
-  border-radius: 18px;
+  border-radius: 1rem;
+  border: 0.0625rem solid #bbb;
 
   &:before {
     position: absolute;
     content: "";
-    height: 14px;
-    width: 14px;
-    left: 4px;
+    height: 0.75rem;
+    width: 0.75rem;
+    left: 0.125rem;
     bottom: 2px;
-    background-color: white;
+    background-color: #adb5bd;
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
   }
 `;
 
-export const Checking = styled.input`
+export const Switch = styled.input`
   &:checked + div {
-    background-color: #2196f3;
+    background-color: #0736a3;
   }
 
   &:focus + div {
-    box-shadow: 0 0 1px #2196f3;
+    box-shadow: 0 0 0.0625rem #2196f3;
   }
 
   &:checked + div:before {
-    -webkit-transform: translateX(18px);
-    -ms-transform: translateX(18px);
-    transform: translateX(18px);
+    background-color: white;
+    -webkit-transform: translateX(0.75rem);
+    -ms-transform: translateX(0.75rem);
+    transform: translateX(0.75rem);
   }
 `;
