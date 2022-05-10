@@ -9,7 +9,7 @@ import Console from "../../console/console";
 import { ProtectedRoute } from "./protectedRoute";
 
 import { ApplicationRoutes } from "./../../../types";
-import PageManagement from "../pageManagement/pageManagement";
+import PageManagement from "../../Sections/pageManagement/pageManagement";
 // useParams
 const ApplicationRouter: React.FC = () => {
   return (
