@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import _map from "lodash/map";
 import * as Styled from "./taskList.style";
 
@@ -9,6 +9,7 @@ import TaskListItem from "./taskListItem";
 const ToDoList: React.FC = () => {
   const [toDoItems, setToDoItems] = useState<IntTask[]>([]);
   const [taskText, setTaskText] = useState<string>("");
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const { createTask, useGetTasks, removeTask, updateTask, unCompleteTasks } =
     useTaskList();
@@ -61,12 +62,16 @@ const ToDoList: React.FC = () => {
     if (newItems) {
       setToDoItems(newItems);
       setTaskText("");
+
+      if (scrollRef?.current) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
     }
   };
 
   return (
     <Styled.ToDoWrapper>
-      <Styled.ToDoItems role="list">
+      <Styled.ToDoItems role="list" ref={scrollRef}>
         {_map(toDoItems, (item, index: number) => (
           <TaskListItem
             handleIsChecked={handleIsChecked}
