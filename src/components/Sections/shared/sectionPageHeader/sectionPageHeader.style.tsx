@@ -25,14 +25,3 @@ export const SubTitle = styled.div<{}>`
 export const Action = styled.div<{}>`
   align-self: center;
 `;
-
-export const ActionButton = styled.div<{}>`
-  background-color: #ddd;
-  border-radius: 0.375rem;
-  padding: 0.25rem 0.625rem;
-  text-align: center;
-  font-size: 0.875rem;
-  width: -moz-fit-content;
-  width: fit-content;
-  float: right;
-`;

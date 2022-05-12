@@ -1,11 +1,12 @@
 import React from "react";
-
-export interface ButtonProps {
-  label: string;
+import * as Styled from "./button.style";
+export interface IntButton {
+  variant?: string;
+  children: any;
 }
 
-const Button = (props: ButtonProps) => {
-  return <button>{props.label}</button>;
+const Button: React.FC<IntButton> = ({ children }) => {
+  return <Styled.Button>{children}</Styled.Button>;
 };
 
 export default Button;

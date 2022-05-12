@@ -1,6 +1,6 @@
 import React from "react";
+import { Switch } from "../../../../../paper";
 import * as Styled from "../staffSettings.styles";
-
 interface IntSettings {
   toggleSetting: (key: string) => void;
   isChecked: boolean;
@@ -18,14 +18,11 @@ const Setting: React.FC<IntSettings> = ({
     <Styled.Setting>
       <div>{name}</div>
       <div>
-        <Styled.SwitchWrapper onClick={() => toggleSetting(stateKey)}>
-          <Styled.Switch
-            type="checkbox"
-            checked={isChecked}
-            onChange={() => null}
-          />
-          <Styled.Slider></Styled.Slider>
-        </Styled.SwitchWrapper>
+        <Switch
+          isChecked={isChecked}
+          onClick={toggleSetting}
+          stateKey={stateKey}
+        />
       </div>
     </Styled.Setting>
   );

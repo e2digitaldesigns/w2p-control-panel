@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Styled from "./sectionPageHeader.style";
+import { Button } from "../../../../paper";
 
 interface IntSectionPageHeader {
   sectionTitle: string;
@@ -18,7 +19,7 @@ const SectionPageHeader: React.FC<IntSectionPageHeader> = ({
         </div>
 
         <Styled.Action>
-          <Styled.ActionButton>New Page</Styled.ActionButton>
+          <Button>New Page</Button>
         </Styled.Action>
       </Styled.SectionPageHeader>
     </>
