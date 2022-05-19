@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { usePermission } from "../../../hooks";
 import NoAccess from "../shared/noAccess/noAccess";
-import SectionPageHeader from "../shared/sectionPageHeader/sectionPageHeader";
+import { SectionPageHeader, SectionPage } from "../shared";
 import { ApplicationRoutes } from "../../../types";
 
 const PageManagement: React.FC = () => {
@@ -21,7 +21,10 @@ const PageManagement: React.FC = () => {
         linkTo={ApplicationRoutes.PageMgtNew}
         linkText="New Page"
       />
-      <Outlet />
+
+      <SectionPage>
+        <Outlet />
+      </SectionPage>
     </>
   );
 };
