@@ -28,6 +28,7 @@ const TemplateHeaderBreadLinks: React.FC = () => {
     }
 
     setTheUsername();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleMenuToggle = () => {

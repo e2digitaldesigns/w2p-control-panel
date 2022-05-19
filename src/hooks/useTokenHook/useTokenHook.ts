@@ -1,5 +1,4 @@
 import jwtDecode from "jwt-decode";
-import _split from "lodash/split";
 import { TUserJWTToken } from "./../../types";
 
 type TCreateAuthToken = () => string | null;

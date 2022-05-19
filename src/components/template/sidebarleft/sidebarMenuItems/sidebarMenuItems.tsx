@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import _map from "lodash/map";
 import { ChevronLeft, Power } from "react-feather";
 import * as Styled from "./sidebarMenuItems.style";

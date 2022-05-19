@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-interface IntSwitch {}
-
 export const SwitchWrapper = styled.div`
   position: relative;
   display: inline-block;

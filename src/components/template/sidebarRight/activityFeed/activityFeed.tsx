@@ -1,5 +1,5 @@
 import * as React from "react";
-import TimeAgo from "timeago-react";
+import TimeAgo from "react-timeago";
 import { LogIn } from "react-feather";
 import _map from "lodash/map";
 import * as Styled from "./activityFeed.style";
@@ -22,7 +22,7 @@ const ActivityFeed: React.FC = () => {
             <Styled.ActivityHeader>
               <div>{act.user}</div>
               <div>
-                <TimeAgo datetime={act.timestamp} />
+                <TimeAgo date={act.timestamp} />
               </div>
             </Styled.ActivityHeader>
             <Styled.ActivityText>{TypeObj[act.type].text}</Styled.ActivityText>

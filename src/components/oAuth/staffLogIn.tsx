@@ -22,6 +22,7 @@ const StaffLogin: React.FC = () => {
     }
 
     checkUserLoginStatus();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleOnSubmit = async () => {

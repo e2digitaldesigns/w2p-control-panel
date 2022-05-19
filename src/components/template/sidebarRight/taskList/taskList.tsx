@@ -17,6 +17,8 @@ const ToDoList: React.FC = () => {
 
   const unCompleteTasksCB = React.useCallback(
     data => unCompleteTasks(data),
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [data]
   );
 

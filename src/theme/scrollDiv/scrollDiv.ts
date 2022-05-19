@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ScrollBars = styled.div`
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   ::-webkit-scrollbar {
-    width: 0.625em;
+    width: 0.5em;
   }
 
   ::-webkit-scrollbar-track {

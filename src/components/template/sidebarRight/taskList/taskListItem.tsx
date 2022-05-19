@@ -1,5 +1,5 @@
 import React from "react";
-import TimeAgo from "timeago-react";
+import TimeAgo from "react-timeago";
 import { Check, Trash } from "react-feather";
 import * as Styled from "./taskList.style";
 
@@ -26,7 +26,7 @@ const TaskListItem: React.FC<IntTaskListItem> = ({
         <Styled.ToDoItemText>{item.text}</Styled.ToDoItemText>
 
         <Styled.ToDoItemTime>
-          <TimeAgo datetime={item.timestamp} />
+          <TimeAgo date={item.timestamp} />
         </Styled.ToDoItemTime>
       </div>
 

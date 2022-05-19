@@ -9,12 +9,12 @@ export const darkTheme = {
     },
     scrollBar: {
       track: {
-        bg: "#ccc",
-        hover: "#ccc"
+        bg: "#ddd",
+        hover: "#ddd"
       },
       thumb: {
-        bg: "#aaa",
-        hover: "#aaa"
+        bg: "#bbb",
+        hover: "#bbb"
       }
     }
   },
