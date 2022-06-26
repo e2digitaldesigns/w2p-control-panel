@@ -1,0 +1,140 @@
+{
+  "pagination": {
+    "results": 2,
+    "resultsPerPage": 2,
+    "totalPages": 5,
+    "currentPage": 1
+  },
+  "pages": [
+    {
+      "_id": "001",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 001",
+      "url": "url-001",
+      "text": "text 001",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "002",
+      "storeFrontId": "xxx",
+      "isActive": false,
+      "name": "Name 002",
+      "url": "url-002",
+      "text": "text 002",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "003",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 003",
+      "url": "url-003",
+      "text": "text 003",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "004",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 004",
+      "url": "url-004",
+      "text": "text 004",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "005",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 005",
+      "url": "url-005",
+      "text": "text 005",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "006",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 006",
+      "url": "url-006",
+      "text": "text 006",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "007",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 007",
+      "url": "url-007",
+      "text": "text 007",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "008",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 008",
+      "url": "url-008",
+      "text": "text 008",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "009",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 009",
+      "url": "url-009",
+      "text": "text 009",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    },
+    {
+      "_id": "010",
+      "storeFrontId": "xxx",
+      "isActive": true,
+      "name": "Name 010",
+      "url": "url-010",
+      "text": "text 010",
+      "isPrimaryMenu": true,
+      "isPageMenu": true,
+      "isInformationMenu": true,
+      "isResourceMenu": true,
+      "isAccountMenu": true
+    }
+  ]
+}

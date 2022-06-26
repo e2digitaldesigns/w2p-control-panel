@@ -1,0 +1,19 @@
+{
+  "_id": "",
+  "isActive": false,
+  "name": "",
+  "placement": {
+    "isPrimaryMenu": false,
+    "isPageMenu": false,
+    "isInformationMenu": false,
+    "isResourceMenu": false,
+    "isAccountMenu": false
+  },
+  "storefrontId": "",
+  "text": "",
+  "url": "",
+  "storefront": {
+    "domain": "",
+    "name": ""
+  }
+}

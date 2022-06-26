@@ -7,12 +7,14 @@ export enum ApplicationRoutes {
   PageMgt = "/console/page-management",
   PageMgtNew = "/console/page-management/new",
   PageMgtList = "/console/page-management/list",
-  PageMgtProfile = "/console/page-management/:id",
+  PageMgtListPage = "/console/page-management/list/:pageNumber",
+  PageMgtProfile = "/console/page-management/profile/:id",
+  PageMgtProfileLink = "/console/page-management/profile/",
 
   ProductMgt = "/console/product-management",
   ProductMgtNew = "/console/product-management/new",
   ProductMgtList = "/console/product-management/list",
-  ProductMgtProfile = "/console/product-management/:id",
+  ProductMgtProfile = "/console/product-management/profile/:id",
 
   UserMgt = "/console/user-management",
   UserMgtNew = "/console/user-management/new",

@@ -10,9 +10,9 @@ import { ProtectedRoute } from "./protectedRoute";
 
 import { ApplicationRoutes } from "./../../../types";
 import PageManagement from "../../Sections/pageManagement/pageManagement";
-import PageManagementList from "../../Sections/pageManagement/pageManagementList";
-import PageManagementProfile from "../../Sections/pageManagement/pageManagementProfile";
-import PageManagementNew from "../../Sections/pageManagement/pageManagementNew";
+import PageManagementList from "../../Sections/pageManagement/pageManagementList/pageManagementList";
+import PageManagementProfile from "../../Sections/pageManagement/pageManagementProfile/pageManagementProfile";
+import PageManagementNew from "../../Sections/pageManagement/pageManagementNew/pageManagementNew";
 // useParams
 const ApplicationRouter: React.FC = () => {
   return (
@@ -45,6 +45,11 @@ const ApplicationRouter: React.FC = () => {
           <Route
             index
             // path={ApplicationRoutes.PageMgtList}
+            element={<PageManagementList />}
+          />
+
+          <Route
+            path={ApplicationRoutes.PageMgtList}
             element={<PageManagementList />}
           />
 

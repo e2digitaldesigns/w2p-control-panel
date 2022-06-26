@@ -9,7 +9,8 @@ const systemDefualtState: IntSystemContext = {
   isActive: false,
   name: "",
   primaryStore: false,
-  storeOwnerId: ""
+  storeOwnerId: "",
+  storefronts: []
 };
 
 const SystemContext = createContext<IntSystemData>({

@@ -6,6 +6,9 @@ export * from "./routes";
 export * from "./templateContextData";
 export * from "./userContextData";
 
+export * from "./pageManagement";
+export * from "./pagination";
+
 export interface IntTask {
   _id?: string;
   isComplete: boolean;
@@ -14,6 +17,7 @@ export interface IntTask {
 }
 
 export enum Endpoints {
+  Pages = "/v1/pages",
   StaffLogin = "/v1/staffAuth",
   System = "/v1/system",
   Tasks = "/v1/tasks"
@@ -22,6 +26,7 @@ export enum Endpoints {
 export const TOKEN = "w2p_";
 
 export enum QueryKeys {
+  Pages = "pages",
   System = "system",
   Task = "task"
 }

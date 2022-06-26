@@ -6,6 +6,7 @@ export interface IntSystemContext {
   name: string;
   primaryStore: boolean;
   storeOwnerId: string;
+  storefronts: any[];
 }
 
 export interface IntSystemContextState {

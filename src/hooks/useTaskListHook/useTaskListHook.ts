@@ -10,7 +10,7 @@ import http from "../../utils/httpService/httpService";
 import { AxiosError } from "axios";
 import { useQuery, UseQueryResult } from "react-query";
 
-type UseGetTasksFn = () => any;
+type TGetTasksFn = () => any;
 
 type CreateTaskFn = (
   items: IntTask[],
@@ -31,7 +31,7 @@ type IntUnCompleteTasksFn = (data: IntTask[]) => void;
 
 export interface IntUseTodoListHooks {
   createTask: CreateTaskFn;
-  useGetTasks: UseGetTasksFn;
+  useGetTasks: TGetTasksFn;
   updateTask: UpdateTaskFn;
   removeTask: RemoveTaskFn;
   unCompleteTasks: IntUnCompleteTasksFn;
@@ -61,7 +61,7 @@ const useTodoListHooks = (): IntUseTodoListHooks => {
     }
   };
 
-  const useGetTasks: UseGetTasksFn = (): UseQueryResult => {
+  const useGetTasks: TGetTasksFn = (): UseQueryResult => {
     return useQuery<IntTask[], AxiosError>(
       QueryKeys.Task,
       async (): Promise<IntTask[]> => http.get(END_POINT).then(res => res.data),

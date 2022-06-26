@@ -1,0 +1,10 @@
+https://ultimatecourses.com/blog/query-strings-search-params-react-router
+
+
+import { Link, useParams, useSearchParams } from "react-router-dom";
+
+  const params = Object.fromEntries([...searchParams]);
+
+  const page = Number(pageNumber) || 1;
+  const sort = searchParams.get("sort") || "name";
+  const order = searchParams.get("order") || "asc";

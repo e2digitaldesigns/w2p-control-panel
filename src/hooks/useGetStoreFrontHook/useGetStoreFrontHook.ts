@@ -11,6 +11,7 @@ interface IntSystem {
   primaryStore: boolean;
   storeOwnerId: string;
   _id: string;
+  storefronts: any[];
 }
 export const useGetStorefrontHook = () => {
   return useQuery<IntSystem, AxiosError>(
