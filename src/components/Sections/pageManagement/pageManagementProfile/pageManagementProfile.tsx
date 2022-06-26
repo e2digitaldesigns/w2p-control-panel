@@ -15,7 +15,7 @@ import defaultState from "./defaultState.json";
 import { schema } from "./validationSchema";
 
 const PageManagementList: React.FC<{}> = () => {
-  let { id: pageId } = useParams();
+  const { id: pageId } = useParams();
   const navigate = useNavigate();
   const { useDeletePage, useUpdatePage, useGetPageById } = usePages();
   const [pageData, setPageData] = useState<IntPage>(defaultState);
@@ -33,7 +33,7 @@ const PageManagementList: React.FC<{}> = () => {
     isLoading: deleteIsLoading,
     isSuccess: deleteIsSuccess,
     mutate: deleteMutate
-  } = useDeletePage(pageId);
+  } = useDeletePage();
 
   useEffect(() => {
     if (!deleteIsLoading && deleteIsSuccess) {
@@ -80,7 +80,7 @@ const PageManagementList: React.FC<{}> = () => {
   };
 
   const onHandleDelete = () => {
-    deleteMutate();
+    pageId && deleteMutate(pageId);
   };
 
   return (

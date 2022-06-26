@@ -32,6 +32,8 @@ interface ICreateNewPageFnData {
 }
 type TCreateNewPageFn = (data: ICreateNewPageFnData) => UseMutationResult;
 
+type TUseDeletePageFn = () => UseMutationResult<any, AxiosError, string>;
+
 type TUseGetPagesFn = () => UseMutationResult<
   IFetchReturn,
   AxiosError,
@@ -44,7 +46,7 @@ type TUseUpdatePageFn = (data: IntPage) => UseMutationResult;
 
 export interface IntUsePagesHook {
   useCreateNewPage: TCreateNewPageFn;
-  useDeletePage: any;
+  useDeletePage: TUseDeletePageFn;
   useGetPages: TUseGetPagesFn;
   useGetPageById: TUseGetPagesByIdFn;
   useUpdatePage: TUseUpdatePageFn;
@@ -61,11 +63,10 @@ const UsePagesHook = (): IntUsePagesHook => {
     );
   };
 
-  const useDeletePage = (_id: any) => {
-    const endPoint = `${END_POINT}/${_id}`;
-
+  const useDeletePage: TUseDeletePageFn = () => {
     return useMutation(
-      async (): Promise<any> => http.delete(endPoint).then(res => res.data),
+      async (_id): Promise<any> =>
+        http.delete(`${END_POINT}/${_id}`).then(res => res.data),
       {}
     );
   };
