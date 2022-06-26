@@ -19,7 +19,7 @@ const PageManagementList: React.FC<{}> = () => {
   const navigate = useNavigate();
   const { useDeletePage, useUpdatePage, useGetPageById } = usePages();
   const [pageData, setPageData] = useState<IntPage>(defaultState);
-  const { data, isLoading, isSuccess } = useGetPageById(pageId);
+  const { data, isError, isLoading, isSuccess } = useGetPageById(pageId);
 
   const {
     // data: upData,
@@ -83,6 +83,14 @@ const PageManagementList: React.FC<{}> = () => {
     pageId && deleteMutate(pageId);
   };
 
+  if (isLoading) {
+    return <h1>Loading</h1>;
+  }
+
+  if (!isLoading && isError) {
+    return <h1>Error</h1>;
+  }
+
   return (
     <>
       <h3>page mgt Profile: {pageId}</h3>
@@ -119,7 +127,7 @@ const PageManagementList: React.FC<{}> = () => {
               <div key={index}>
                 <div>{menu.name}</div>
                 <Switch
-                  isChecked={!!pageData?.placement[menu.stateKey]}
+                  isChecked={!!pageData?.placement?.[menu.stateKey]}
                   onClick={() => toggleSetting(menu.stateKey)}
                   stateKey={menu.stateKey}
                 />
