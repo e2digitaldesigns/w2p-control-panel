@@ -30,7 +30,7 @@ const PageManagementNew: React.FC<{}> = () => {
     if (!isLoading && isSuccess) {
       navigate(ApplicationRoutes.PageMgtProfileLink + data);
     }
-  }, [data, isLoading, isSuccess]);
+  }, [data, isLoading, isSuccess, navigate]);
 
   const handleOnChange = (
     e:

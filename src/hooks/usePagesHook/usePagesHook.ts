@@ -1,10 +1,3 @@
-import _cloneDeep from "lodash/cloneDeep";
-import _filter from "lodash/filter";
-import _size from "lodash/size";
-import _sortBy from "lodash/sortBy";
-
-import { useTemplate } from "..";
-
 import { Endpoints, TPages, QueryKeys, IntPage } from "../../types";
 import http from "../../utils/httpService/httpService";
 import { AxiosError } from "axios";
@@ -59,23 +52,11 @@ export interface IntUsePagesHook {
 
 const UsePagesHook = (): IntUsePagesHook => {
   const END_POINT = Endpoints.Pages;
-  const { templateState, setTemplateState } = useTemplate();
 
   const useCreateNewPage: TCreateNewPageFn = newObj => {
-    console.log(60, "createNewPage", newObj, "p");
-
-    const endPoint = `${END_POINT}`;
-
-    // try {
-    //   const { data } = await http.post(endPoint, { newObj });
-    //   console.log(70, data);
-    // } catch (error) {
-    //   console.error(error);
-    // }
-
     return useMutation(
       async (): Promise<IntPage> =>
-        http.post(endPoint, { newObj }).then(res => res.data),
+        http.post(END_POINT, { newObj }).then(res => res.data),
       {}
     );
   };

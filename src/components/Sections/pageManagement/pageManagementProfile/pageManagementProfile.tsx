@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import _cloneDeep from "lodash/cloneDeep";
 import _map from "lodash/map";
-import _split from "lodash/split";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { usePages } from "../../../../hooks";
 import {
+  ApplicationRoutes,
   IntPage,
   IPageMenuArray,
   TPageMenuStateKey,
@@ -16,25 +16,30 @@ import { schema } from "./validationSchema";
 
 const PageManagementList: React.FC<{}> = () => {
   let { id: pageId } = useParams();
+  const navigate = useNavigate();
   const { useDeletePage, useUpdatePage, useGetPageById } = usePages();
   const [pageData, setPageData] = useState<IntPage>(defaultState);
   const { data, isLoading, isSuccess } = useGetPageById(pageId);
 
   const {
-    data: upData,
-    isLoading: upIsLoading,
-    isSuccess: upIsSuccess,
+    // data: upData,
+    // isLoading: upIsLoading,
+    // isSuccess: upIsSuccess,
     mutate
   } = useUpdatePage(pageData);
 
-  console.log(30, pageId, { data, isLoading, isSuccess });
-
   const {
-    data: deleteData,
+    // data: deleteData,
     isLoading: deleteIsLoading,
     isSuccess: deleteIsSuccess,
     mutate: deleteMutate
   } = useDeletePage(pageId);
+
+  useEffect(() => {
+    if (!deleteIsLoading && deleteIsSuccess) {
+      navigate(ApplicationRoutes.PageMgtList, { replace: true });
+    }
+  }, [deleteIsLoading, deleteIsSuccess, navigate]);
 
   useEffect(() => {
     let isHere = true;
@@ -43,7 +48,7 @@ const PageManagementList: React.FC<{}> = () => {
     return () => {
       isHere = false;
     };
-  }, [isLoading]);
+  }, [data, isLoading, isSuccess]);
 
   const handleOnChange = (
     e:

@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import _map from "lodash/map";
-import _split from "lodash/split";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { Pagination } from "../../shared";
 import { usePages } from "../../../../hooks";
@@ -12,30 +10,42 @@ import {
 import PageManagementListSearchBar from "./searchBar";
 import PageManagementListTable from "./listTable";
 
+enum PageListParams {
+  Order = "order",
+  Page = "page",
+  ResultsPerPage = "resultsPerPage",
+  SearchTerm = "st",
+  SortBy = "sortBy"
+}
+
 const PageManagementList: React.FC<{}> = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { useGetPages } = usePages();
+  const pageRef = useRef<number>(0);
 
   const [order, setOrder] = useState<string>(
-    searchParams.get("order") || PageManagementSearchDefaults.Order
+    searchParams.get(PageListParams.Order) || PageManagementSearchDefaults.Order
   );
 
   const [page, setPage] = useState<number>(
-    Number(searchParams.get("page")) || PageManagementSearchDefaults.Page
+    Number(searchParams.get(PageListParams.Page)) ||
+      PageManagementSearchDefaults.Page
   );
 
   const [sortBy, setSortBy] = useState<string>(
-    searchParams.get("sortBy") || PageManagementSearchDefaults.SortBy
+    searchParams.get(PageListParams.SortBy) ||
+      PageManagementSearchDefaults.SortBy
   );
 
   const [resultsPerPage, setResultsPerPage] = useState<number>(
-    Number(searchParams.get("resultsPerPage")) ||
+    Number(searchParams.get(PageListParams.ResultsPerPage)) ||
       PageManagementSearchDefaults.ResultsPerPage
   );
 
   const [searchTerm, setSearchTerm] = useState<string>(
-    searchParams.get("st") || PageManagementSearchDefaults.SearchTerm
+    searchParams.get(PageListParams.SearchTerm) ||
+      PageManagementSearchDefaults.SearchTerm
   );
 
   const [sortByValue, setSortValue] = useState<string>(`${sortBy}-${order}`);
@@ -44,13 +54,15 @@ const PageManagementList: React.FC<{}> = () => {
   const { data, isLoading, isSuccess, mutate } = useGetPages();
 
   useEffect(() => {
-    console.log(53, { order, page, resultsPerPage, searchTerm, sortBy });
+    if (pageRef.current === page) return;
+
+    pageRef.current = page;
     mutate({ order, page, resultsPerPage, searchTerm, sortBy });
-  }, [page]);
+  }, [order, page, resultsPerPage, searchTerm, sortBy, mutate]);
 
   useEffect(() => {
     if (!isLoading && isSuccess && data?.pages) setPages(data.pages);
-  }, [isLoading]);
+  }, [isLoading, isSuccess, data]);
 
   const handleResultsPerPageChange = (
     e: React.ChangeEvent<HTMLSelectElement>
@@ -74,7 +86,6 @@ const PageManagementList: React.FC<{}> = () => {
   };
 
   const handleSubmit = (num: number = 1): void => {
-    console.log(82, num);
     if (page !== 1) {
       setPage(Number(num));
     } else {
