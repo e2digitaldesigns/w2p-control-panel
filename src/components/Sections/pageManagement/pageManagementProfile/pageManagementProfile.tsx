@@ -22,18 +22,19 @@ const PageManagementList: React.FC<{}> = () => {
   const { data, isError, isLoading, isSuccess } = useGetPageById(pageId);
 
   const {
-    // data: upData,
-    // isLoading: upIsLoading,
+    isLoading: upIsLoading,
     // isSuccess: upIsSuccess,
     mutate
   } = useUpdatePage(pageData);
 
   const {
-    // data: deleteData,
     isLoading: deleteIsLoading,
     isSuccess: deleteIsSuccess,
     mutate: deleteMutate
   } = useDeletePage();
+
+  const showUpdateLoader = !!upIsLoading || !!deleteIsLoading;
+  console.log({ showUpdateLoader });
 
   useEffect(() => {
     if (!deleteIsLoading && deleteIsSuccess) {
@@ -94,6 +95,8 @@ const PageManagementList: React.FC<{}> = () => {
   return (
     <>
       <h3>page mgt Profile: {pageId}</h3>
+
+      {showUpdateLoader && <h1>page is updating</h1>}
 
       {pageData && (
         <>
