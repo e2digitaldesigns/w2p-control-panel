@@ -26,14 +26,10 @@ const SidebarNormalMenuItems: React.FC<IntSidebarNormalMenuItems> = ({
           <menuItem.icon />
         </div>
 
-        {isMenuVisible && (
-          <>
-            <div> {menuItem.name}</div>
-            <div>
-              <ChevronLeft />
-            </div>
-          </>
-        )}
+        <div> {menuItem.name}</div>
+        <div>
+          <ChevronLeft />
+        </div>
       </Styled.SidebarMenuItem>
     </Link>
   );

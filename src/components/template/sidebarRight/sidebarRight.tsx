@@ -55,7 +55,10 @@ const SidebarRight: React.FC = () => {
   ];
 
   return (
-    <Styled.SidebarRightWrapper data-testid="sidebar-right-wrapper">
+    <Styled.SidebarRightWrapper
+      showMenuRight={!!templateState.sidebarMenuRight.isVisible}
+      data-testid="sidebar-right-wrapper"
+    >
       <Styled.SidebarRightMenu
         aria-label="Right side bar menu"
         data-testid="sidebar-right-menu"

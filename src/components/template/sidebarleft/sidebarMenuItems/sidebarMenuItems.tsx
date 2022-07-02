@@ -12,7 +12,7 @@ const SidebarMenuItems: React.FC = () => {
   const { removeToken } = useToken();
   const navigate = useNavigate();
   const { templateState } = useTemplate();
-  const isMenuVisible = templateState.sidebarMenuLeft.isVisible;
+  const isMenuVisible = templateState.sidebarMenuLeft.isVisible || true;
 
   const handleLogout = () => {
     removeToken();

@@ -6,16 +6,13 @@ interface IntSidebarMenuItem {
 
 export const SidebarMenuItem = styled.div<IntSidebarMenuItem>`
   display: grid;
-  grid-template-columns: 3.125rem ${props =>
-      props.showMenuLeft && "9.325rem 1.25rem"};
-
+  grid-template-columns: 3.125rem 9.325rem 1.25rem;
   height: 3.125rem;
   width: 100%;
   border-bottom: 0.0625rem solid ${props => props.theme.default.borderColor};
   align-items: center;
   background-color: ${props => props.theme.default.bg};
   font-size: 0.875rem;
-  transition: 0.25s;
 
   &:hover {
     background-color: ${props => props.theme.sidebarLeft.items.hover.bg};

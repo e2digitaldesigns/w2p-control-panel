@@ -16,12 +16,12 @@ const Console: React.FC<IntConsole> = () => {
   return (
     <>
       <TemplateHeader />
-      <Styled.ConsoleDiv
-        showMenuLeft={!!templateState.sidebarMenuLeft.isVisible}
-        showMenuRight={!!templateState.sidebarMenuRight.isVisible}
-      >
+      <Styled.ConsoleDiv>
         <SidebarLeft />
-        <Styled.OutletDiv>
+        <Styled.OutletDiv
+          showMenuLeft={!!templateState.sidebarMenuLeft.isVisible}
+          showMenuRight={!!templateState.sidebarMenuRight.isVisible}
+        >
           <Outlet />
         </Styled.OutletDiv>
         <SidebarRight />

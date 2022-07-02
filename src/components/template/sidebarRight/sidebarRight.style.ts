@@ -1,10 +1,25 @@
 import styled, { keyframes } from "styled-components";
 
-export const SidebarRightWrapper = styled.div`
-  height: 100%;
-  border-left: 0.0625rem solid ${props => props.theme.default.borderColor};
+interface IntSidebarRightWrapper {
+  showMenuRight: boolean;
+}
+
+export const SidebarRightWrapper = styled.div<IntSidebarRightWrapper>`
   display: grid;
   grid-template-rows: 3.125rem auto;
+
+  position: fixed;
+  right: ${props =>
+    props.showMenuRight
+      ? props.theme.sizes.sidebarRight.width.collaspe
+      : "-" + props.theme.sizes.sidebarRight.width.normal};
+  top: ${props => props.theme.sizes.header.height};
+
+  height: calc(100vh - ${props => props.theme.sizes.header.height});
+  width: ${props => props.theme.sizes.sidebarRight.width.normal};
+  border-left: 0.0625rem solid ${props => props.theme.default.borderColor};
+
+  transition: right ${props => props.theme.mediaQueryTransitionSpeed};
 `;
 
 export const SidebarRightMenu = styled.nav`
