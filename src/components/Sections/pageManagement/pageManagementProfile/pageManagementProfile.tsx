@@ -25,7 +25,7 @@ const PageManagementList: React.FC<{}> = () => {
     isLoading: upIsLoading,
     // isSuccess: upIsSuccess,
     mutate
-  } = useUpdatePage(pageData);
+  } = useUpdatePage();
 
   const {
     isLoading: deleteIsLoading,

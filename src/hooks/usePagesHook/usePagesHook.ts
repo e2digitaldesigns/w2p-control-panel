@@ -42,7 +42,7 @@ type TUseGetPagesFn = () => UseMutationResult<
 
 type TUseGetPagesByIdFn = (_id: string | undefined) => UseQueryResult;
 
-type TUseUpdatePageFn = (data: IntPage) => UseMutationResult;
+type TUseUpdatePageFn = () => UseMutationResult<any, AxiosError, IntPage>;
 
 export interface IntUsePagesHook {
   useCreateNewPage: TCreateNewPageFn;
@@ -96,11 +96,12 @@ const UsePagesHook = (): IntUsePagesHook => {
     );
   };
 
-  const useUpdatePage: TUseUpdatePageFn = data => {
-    const endPoint = `${END_POINT}/${data._id}`;
+  const useUpdatePage: TUseUpdatePageFn = () => {
     return useMutation(
-      async (): Promise<IntPage> =>
-        http.put(endPoint, { updateObj: data }).then(res => res.data),
+      async (data): Promise<IntPage> =>
+        http
+          .put(`${END_POINT}/${data._id}`, { updateObj: data })
+          .then(res => res.data),
       {}
     );
   };

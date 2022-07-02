@@ -1,3 +1,10 @@
+export interface IntSystemContextStorefronts {
+  _id: string;
+  domain: string;
+  name: string;
+  ext: string;
+}
+
 export interface IntSystemContext {
   _id: string;
   domain: string;
@@ -6,7 +13,7 @@ export interface IntSystemContext {
   name: string;
   primaryStore: boolean;
   storeOwnerId: string;
-  storefronts: any[];
+  storefronts: IntSystemContextStorefronts[];
 }
 
 export interface IntSystemContextState {
