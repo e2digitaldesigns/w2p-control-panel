@@ -22,6 +22,7 @@ export const SidebarRightWrapper = styled.div<IntSidebarRightWrapper>`
   transition: right ${props => props.theme.mediaQueryTransitionSpeed};
 
   background-color: #ddd;
+  z-index: 999;
 
   @media (max-width: ${props => props.theme.mediaQuery.tablet}) {
     width: calc(100% - 50px);

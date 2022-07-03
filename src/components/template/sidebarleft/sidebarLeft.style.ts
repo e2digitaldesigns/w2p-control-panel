@@ -19,4 +19,5 @@ export const Sidebarleft = styled.nav<IntSidebarleft>`
   overflow: hidden;
   background-color: #ccc;
   transition: width ${props => props.theme.mediaQueryTransitionSpeed};
+  z-index: 999;
 `;
