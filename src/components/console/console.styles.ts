@@ -25,5 +25,6 @@ export const OutletDiv = styled.div<IntOutletDiv>`
 
   @media (max-width: ${props => props.theme.mediaQuery.tablet}) {
     padding-left: ${props => props.theme.sizes.sidebarLeft.width.collaspe};
+    padding-right: 0;
   }
 `;

@@ -20,6 +20,17 @@ export const SidebarRightWrapper = styled.div<IntSidebarRightWrapper>`
   border-left: 0.0625rem solid ${props => props.theme.default.borderColor};
 
   transition: right ${props => props.theme.mediaQueryTransitionSpeed};
+
+  background-color: #ddd;
+
+  @media (max-width: ${props => props.theme.mediaQuery.tablet}) {
+    width: calc(100% - 50px);
+    right: ${props =>
+      props.showMenuRight
+        ? props.theme.sizes.sidebarRight.width.collaspe
+        : "-100%"};
+    border-left: 0;
+  }
 `;
 
 export const SidebarRightMenu = styled.nav`

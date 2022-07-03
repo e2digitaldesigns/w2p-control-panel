@@ -15,9 +15,10 @@ export const primaryTheme = {
     }
   },
   mediaQuery: {
+    mobile: "480px",
     tablet: "768px",
     desktop: "1024px",
-    desktopLarge: "2000"
+    desktopLarge: "1200px"
   },
   mediaQueryTransitionSpeed: ".5s"
 };
