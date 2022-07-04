@@ -34,7 +34,6 @@ const PageManagementList: React.FC<{}> = () => {
   } = useDeletePage();
 
   const showUpdateLoader = !!upIsLoading || !!deleteIsLoading;
-  console.log({ showUpdateLoader });
 
   useEffect(() => {
     if (!deleteIsLoading && deleteIsSuccess) {

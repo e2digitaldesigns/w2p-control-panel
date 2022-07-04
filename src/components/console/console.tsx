@@ -1,5 +1,5 @@
-import React from "react";
-import { useTemplate } from "../../hooks";
+import React, { useRef } from "react";
+import { useResponsiveBreakPoints, useTemplate } from "../../hooks";
 import { Outlet } from "react-router-dom";
 
 import * as Styled from "./console.styles";
@@ -12,6 +12,9 @@ interface IntConsole {}
 
 const Console: React.FC<IntConsole> = () => {
   const { templateState } = useTemplate();
+  const outletDiv = useRef<HTMLDivElement>(null);
+  const { useSetOutletDivBreakPoint } = useResponsiveBreakPoints();
+  useSetOutletDivBreakPoint(outletDiv);
 
   return (
     <>
@@ -19,6 +22,7 @@ const Console: React.FC<IntConsole> = () => {
       <Styled.ConsoleDiv>
         <SidebarLeft />
         <Styled.OutletDiv
+          ref={outletDiv}
           showMenuLeft={!!templateState.sidebarMenuLeft.isVisible}
           showMenuRight={!!templateState.sidebarMenuRight.isVisible}
         >

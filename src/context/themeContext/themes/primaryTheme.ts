@@ -18,7 +18,8 @@ export const primaryTheme = {
     mobile: "480px",
     tablet: "768px",
     desktop: "1024px",
-    desktopLarge: "1200px"
+    desktopLarge: "1200px",
+    desktopXL: "1600px"
   },
   mediaQueryTransitionSpeed: ".5s"
 };

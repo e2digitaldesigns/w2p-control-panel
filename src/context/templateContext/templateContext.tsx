@@ -1,11 +1,13 @@
 import React, { createContext } from "react";
 import {
+  EnumContentMediaQuery,
   IntTemplateContext,
   IntTemplateData,
   IntTemplateThemeNames
 } from "../../types";
 
 const templateDefaultState: IntTemplateContext = {
+  contentMediaQuery: EnumContentMediaQuery.Desktop,
   theme: IntTemplateThemeNames.Light,
   sidebarMenuLeft: {
     isVisible: true

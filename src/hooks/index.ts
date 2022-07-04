@@ -1,4 +1,5 @@
 export { default as useBreadCrumbs } from "./useBreadCrumbsHook";
+export { default as useResponsiveBreakPoints } from "./useResponsiveBreakPointsHook";
 export { default as usePages } from "./usePagesHook";
 export { default as usePermission } from "./usePermissionHook";
 export { default as useFormHelpers } from "./useFormHelpersHook";
