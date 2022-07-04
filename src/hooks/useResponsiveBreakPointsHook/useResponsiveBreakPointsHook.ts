@@ -7,16 +7,23 @@ import { primaryTheme } from "../../context/themeContext/themes";
 import { useTemplate } from "../../hooks";
 import { EnumContentMediaQuery } from "../../types";
 
-export interface IntuseResponsiveBreakPointsHook {}
-
 type TBreakPoints = { [key: string]: number };
 
-export type TuseResponsiveBreakPointsHook = (
+export type TuseGetBreakPoint = (
   targetElement: React.RefObject<Element>,
   breakPoints?: TBreakPoints[]
 ) => string;
 
-const useResponsiveBreakPointsHook: any = (): any => {
+export type TUseSetOutletDivBreakPoint = (
+  targetElement: React.RefObject<Element>
+) => void;
+
+export interface IntuseResponsiveBreakPointsHook {
+  useGetBreakPoint: TuseGetBreakPoint;
+  useSetOutletDivBreakPoint: TUseSetOutletDivBreakPoint;
+}
+
+const useResponsiveBreakPointsHook = (): IntuseResponsiveBreakPointsHook => {
   const pasreDefaultBreakPoints = (): TBreakPoints[] => {
     const keys: string[] = Object.keys(primaryTheme.mediaQuery);
     const vals: string[] = Object.values(primaryTheme.mediaQuery);
@@ -28,7 +35,10 @@ const useResponsiveBreakPointsHook: any = (): any => {
     return breaks;
   };
 
-  const findBreakPoint = (breakPoints: TBreakPoints[], width: number) => {
+  const findBreakPoint = (
+    breakPoints: TBreakPoints[],
+    width: number
+  ): string => {
     const breakPointArray: number[] = _map(
       breakPoints,
       (breakPoint: TBreakPoints) => Object.values(breakPoint)[0]
@@ -46,7 +56,7 @@ const useResponsiveBreakPointsHook: any = (): any => {
     return Object.keys(breakPoints[breakPointIndex])[0];
   };
 
-  const useGetBreakPoint: TuseResponsiveBreakPointsHook = (
+  const useGetBreakPoint: TuseGetBreakPoint = (
     targetElement,
     breakPoints = pasreDefaultBreakPoints()
   ) => {
@@ -77,18 +87,20 @@ const useResponsiveBreakPointsHook: any = (): any => {
     return breakSize;
   };
 
-  const useSetOutletDivBreakPoint: any = (targetElement: any) => {
-    const { templateState, setTemplateState } = useTemplate();
-    const breakPoint = useGetBreakPoint(targetElement);
+  const useSetOutletDivBreakPoint: TUseSetOutletDivBreakPoint =
+    targetElement => {
+      const { templateState, setTemplateState } = useTemplate();
+      const breakPoint = useGetBreakPoint(targetElement);
+      console.log({ breakPoint });
 
-    useEffect(() => {
-      const newState = _cloneDeep(templateState);
-      newState.contentMediaQuery = breakPoint as EnumContentMediaQuery;
-      setTemplateState(newState);
+      useEffect(() => {
+        const newState = _cloneDeep(templateState);
+        newState.contentMediaQuery = breakPoint as EnumContentMediaQuery;
+        setTemplateState(newState);
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [breakPoint, useTemplate]);
-  };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [breakPoint, useTemplate]);
+    };
 
   return {
     useGetBreakPoint,
