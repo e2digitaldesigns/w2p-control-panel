@@ -7,6 +7,12 @@ export const SectionPageHeader = styled.header<{}>`
   padding: 0.3125rem 0.625rem;
   height: 5.625rem;
   background-color: white;
+  overflow: hidden;
+
+  @media (max-width: ${props => props.theme.mediaQuery.tablet}) {
+    height: auto;
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Crumbs = styled.div<{}>`
@@ -36,4 +42,11 @@ export const ActionButton = styled.div<{}>`
   width: -moz-fit-content;
   width: fit-content;
   float: right;
+
+  @media (max-width: ${props => props.theme.mediaQuery.tablet}) {
+    float: left;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.25rem;
+  }
 `;
