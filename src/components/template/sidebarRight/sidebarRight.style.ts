@@ -25,12 +25,11 @@ export const SidebarRightWrapper = styled.div<IntSidebarRightWrapper>`
   z-index: 999;
 
   @media (max-width: ${props => props.theme.mediaQuery.tablet}) {
-    width: calc(100% - 50px);
+    width: calc(100% - 49px);
     right: ${props =>
       props.showMenuRight
         ? props.theme.sizes.sidebarRight.width.collaspe
         : "-100%"};
-    border-left: 0;
   }
 `;
 
