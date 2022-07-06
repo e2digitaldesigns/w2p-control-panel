@@ -13,6 +13,7 @@ import {
 import { Switch } from "../../../../paper";
 import defaultState from "./defaultState.json";
 import { schema } from "./validationSchema";
+import PageManagementProfileForm from "./pageManagementProfileForm";
 
 const PageManagementList: React.FC<{}> = () => {
   const { id: pageId } = useParams();
@@ -93,11 +94,13 @@ const PageManagementList: React.FC<{}> = () => {
 
   return (
     <>
-      <h3>page mgt Profile: {pageId}</h3>
+      <h5>page mgt Profile: {pageId}</h5>
 
-      {showUpdateLoader && <h1>page is updating</h1>}
+      {showUpdateLoader && <h5>page is updating</h5>}
 
-      {pageData && (
+      {pageData && <PageManagementProfileForm pageData={pageData} />}
+
+      {/* {pageData && (
         <>
           <input
             name="url"
@@ -138,7 +141,7 @@ const PageManagementList: React.FC<{}> = () => {
           )}
           <button onClick={handleSubmit}>go go go</button>
         </>
-      )}
+      )} */}
 
       <hr />
       <button onClick={onHandleDelete}>delete</button>
