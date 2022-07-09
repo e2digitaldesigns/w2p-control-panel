@@ -35,8 +35,7 @@ const TextField: React.FC<IntTextField> = ({
   cols = [25, 75],
   label,
   name,
-  placeholder = "",
-  type = "text"
+  placeholder = ""
 }) => {
   const [field, meta, helpers] = useField(name);
   const { templateState } = useTemplate();
@@ -48,7 +47,7 @@ const TextField: React.FC<IntTextField> = ({
         <Forms.Label htmlFor={name}>{label}</Forms.Label>
       </Forms.Column>
       <Forms.Column spacing={cols[1]}>
-        <Forms.Text {...field} type={type} placeholder={placeholder} />
+        <Forms.TextField {...field} placeholder={placeholder} />
         <ErrorMessage meta={meta} />
       </Forms.Column>
     </>

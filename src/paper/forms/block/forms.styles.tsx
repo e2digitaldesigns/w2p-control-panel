@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import { useTemplate } from "./../../../hooks";
 
 interface ICol {
   spacing: number;
@@ -15,7 +13,9 @@ const base = `
 
 const padding = ".75rem";
 
-export const ButtonSubmit = styled.input`
+export const ButtonSubmit = styled.input.attrs({
+  type: "button"
+})`
   background-color: #04aa6d;
   color: white;
   padding: 0.75rem 1.25rem;
@@ -65,7 +65,7 @@ export const Select = styled.select`
   padding: ${padding};
 `;
 
-export const Text = styled.input`
+export const TextField = styled.input`
   ${base};
   padding: ${padding};
 `;

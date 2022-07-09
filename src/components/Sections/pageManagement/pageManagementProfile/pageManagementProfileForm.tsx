@@ -1,5 +1,5 @@
 import React from "react";
-import { useField, Form, FormikProps, Formik } from "formik";
+import { Form, Formik } from "formik";
 
 import { IntPage } from "../../../../types";
 import * as Forms from "../../../../paper/forms/block/forms.styles";
@@ -106,7 +106,7 @@ const PageManagementProfileForm: React.FC<IntPageManagementProfileForm> = ({
             </Forms.Row>
 
             <Forms.Row>
-              <Forms.ButtonSubmit type="submit" value="Submit" />
+              <Forms.ButtonSubmit value="Submit" />
             </Forms.Row>
           </Form>
         )}
