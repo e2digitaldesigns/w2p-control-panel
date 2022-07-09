@@ -30,7 +30,7 @@ interface ICreateNewPageFnData {
   name: string;
   storefrontId: string;
 }
-type TCreateNewPageFn = (data: ICreateNewPageFnData) => UseMutationResult;
+type TCreateNewPageFn = () => UseMutationResult;
 
 type TUseDeletePageFn = () => UseMutationResult<any, AxiosError, string>;
 
@@ -55,9 +55,9 @@ export interface IntUsePagesHook {
 const UsePagesHook = (): IntUsePagesHook => {
   const END_POINT = Endpoints.Pages;
 
-  const useCreateNewPage: TCreateNewPageFn = newObj => {
+  const useCreateNewPage: TCreateNewPageFn = () => {
     return useMutation(
-      async (): Promise<IntPage> =>
+      async (newObj): Promise<IntPage> =>
         http.post(END_POINT, { newObj }).then(res => res.data),
       {}
     );

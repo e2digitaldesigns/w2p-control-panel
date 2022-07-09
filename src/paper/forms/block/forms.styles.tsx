@@ -14,7 +14,7 @@ const base = `
 const padding = ".75rem";
 
 export const ButtonSubmit = styled.input.attrs({
-  type: "button"
+  type: "submit"
 })`
   background-color: #04aa6d;
   color: white;
@@ -29,7 +29,6 @@ export const ButtonSubmit = styled.input.attrs({
 export const Column = styled.div<ICol>`
   float: left;
   width: ${props => props.spacing}%;
-  margin-top: 0.375rem;
 `;
 
 export const Container = styled.div`
@@ -53,6 +52,7 @@ export const Label = styled.label`
 `;
 
 export const Row = styled.div`
+  margin-top: 0.375rem;
   &:after {
     content: "";
     display: table;

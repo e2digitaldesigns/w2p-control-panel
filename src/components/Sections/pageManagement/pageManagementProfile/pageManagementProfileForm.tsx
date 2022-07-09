@@ -23,6 +23,10 @@ const PageManagementProfileForm: React.FC<IntPageManagementProfileForm> = ({
   const { templateState } = useTemplate();
   const mediaQuery = templateState.contentMediaQuery as string;
 
+  const handleFormSubmit = (values: any) => {
+    console.log(values);
+  };
+
   if (!pageData._id) {
     return null;
   }
@@ -34,8 +38,7 @@ const PageManagementProfileForm: React.FC<IntPageManagementProfileForm> = ({
           ...pageData
         }}
         onSubmit={(values, actions) => {
-          console.log(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
+          handleFormSubmit(values);
         }}
         validationSchema={schema}
       >

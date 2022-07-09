@@ -1,14 +1,30 @@
 import React, { useEffect, useState } from "react";
+import * as yup from "yup";
+import { Form, Formik } from "formik";
 import _cloneDeep from "lodash/cloneDeep";
 import _map from "lodash/map";
 import { useNavigate } from "react-router-dom";
 import { usePages, useSystem } from "../../../../hooks";
 import { ApplicationRoutes } from "../../../../types";
+import * as Forms from "../../../../paper/forms/block/forms.styles";
 
+import {
+  SelectField,
+  Textarea,
+  TextField
+} from "../../../../paper/forms/block/blockFormFields";
 interface IPageState {
   name: string;
   storefrontId: string;
 }
+
+export const schema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "Page name must be at least 3 characters long")
+    .required(),
+  storefrontId: yup.string().required()
+});
 
 const PageManagementNew: React.FC<{}> = () => {
   const navigate = useNavigate();
@@ -19,7 +35,7 @@ const PageManagementNew: React.FC<{}> = () => {
     storefrontId: ""
   });
 
-  const { data, isLoading, isSuccess, mutate } = useCreateNewPage(state);
+  const { data, isLoading, isSuccess, mutate } = useCreateNewPage();
 
   useEffect(() => {
     const storefrontId = systemState.storefronts?.[0]?._id;
@@ -32,47 +48,42 @@ const PageManagementNew: React.FC<{}> = () => {
     }
   }, [data, isLoading, isSuccess, navigate]);
 
-  const handleOnChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
-  ): void => {
-    const newState = _cloneDeep(state);
-    newState[e.target.name as keyof IPageState] = e.target.value;
-    setState(newState);
-  };
-
-  const handleSubmit = () => {
-    state.storefrontId && mutate(state);
-  };
+  if (!state.storefrontId) {
+    return null;
+  }
 
   return (
     <>
-      <h1>page mgt New</h1>
-      <input
-        name="name"
-        onChange={handleOnChange}
-        type="text"
-        value={state.name}
-      />
-      <select
-        name="storefrontId"
-        onChange={handleOnChange}
-        value={state.storefrontId}
-      >
-        {!state.storefrontId && (
-          <option disabled={!!state.storefrontId} value=" ">
-            Choose Storefront
-          </option>
-        )}
+      <Forms.Container>
+        <Formik
+          initialValues={{
+            name: "ddd",
+            storefrontId: state.storefrontId
+          }}
+          onSubmit={(values: IPageState) => mutate(values)}
+          validationSchema={schema}
+        >
+          {() => (
+            <Form>
+              <Forms.Row>
+                <TextField label="Name" name="name" />
+              </Forms.Row>
 
-        {_map(systemState.storefronts, store => (
-          <option key={store._id} value={store._id}>
-            {store.name}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleSubmit}>go go go</button>{" "}
+              <Forms.Row>
+                <SelectField
+                  label="Store"
+                  name="storefrontId"
+                  optionType="storefronts"
+                />
+              </Forms.Row>
+
+              <Forms.Row>
+                <Forms.ButtonSubmit value="Submit" />
+              </Forms.Row>
+            </Form>
+          )}
+        </Formik>
+      </Forms.Container>
     </>
   );
 };
