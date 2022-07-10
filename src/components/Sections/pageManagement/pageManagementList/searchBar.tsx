@@ -1,5 +1,6 @@
 import React from "react";
 import _map from "lodash/map";
+import * as Styled from "./searchBar.styles";
 
 import {
   IPageManagementPaginationSorting,
@@ -28,17 +29,23 @@ const PageManagementListSearchBar: React.FC<IPageManagementListSearchBar> = ({
 }) => {
   return (
     <>
-      <input type="text" value={searchTerm} onChange={handleSearchTermChange} />
+      <Styled.SearchInput
+        value={searchTerm}
+        onChange={handleSearchTermChange}
+      />
 
-      <select value={resultsPerPage} onChange={handleResultsPerPageChange}>
+      <Styled.SearchSelect
+        value={resultsPerPage}
+        onChange={handleResultsPerPageChange}
+      >
         {_map(RESULTS_PER_PAGE, (number: number) => (
           <option key={number} value={number}>
             {number}
           </option>
         ))}
-      </select>
+      </Styled.SearchSelect>
 
-      <select value={sortByValue} onChange={handleSortingChange}>
+      <Styled.SearchSelect value={sortByValue} onChange={handleSortingChange}>
         {_map(
           PageManagementPaginationSorting,
           (label: IPageManagementPaginationSorting, index: number) => (
@@ -47,7 +54,7 @@ const PageManagementListSearchBar: React.FC<IPageManagementListSearchBar> = ({
             </option>
           )
         )}
-      </select>
+      </Styled.SearchSelect>
 
       <button onClick={() => handleSubmit()}>GO</button>
     </>

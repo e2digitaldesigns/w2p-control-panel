@@ -3,6 +3,7 @@ import _map from "lodash/map";
 import _range from "lodash/range";
 
 import { TPagination } from "../../../../types";
+import * as Styled from "./pagination.styles";
 
 interface IntPagination {
   data: TPagination;
@@ -19,29 +20,35 @@ const Pagination: React.FC<IntPagination> = ({
 
   return (
     <>
-      {showPrevLink && (
-        <span onClick={() => handleChangePageNumber(data.currentPage - 1)}>
-          Prev
-        </span>
-      )}
+      <Styled.PaginationWrapper>
+        <Styled.Pagination>
+          {showPrevLink && (
+            <Styled.PaginationLink
+              onClick={() => handleChangePageNumber(data.currentPage - 1)}
+            >
+              Prev
+            </Styled.PaginationLink>
+          )}
 
-      <ul>
-        {_map(totalPageArr, (num: number) => (
-          <li
-            key={num}
-            className={data.currentPage === num ? "Active" : "Inactive"}
-            onClick={() => handleChangePageNumber(num)}
-          >
-            {num}
-          </li>
-        ))}
-      </ul>
+          {_map(totalPageArr, (num: number) => (
+            <Styled.PaginationLink
+              active={data.currentPage === num}
+              key={num}
+              onClick={() => handleChangePageNumber(num)}
+            >
+              {num}
+            </Styled.PaginationLink>
+          ))}
 
-      {showNextLink && (
-        <span onClick={() => handleChangePageNumber(data.currentPage + 1)}>
-          Next
-        </span>
-      )}
+          {showNextLink && (
+            <Styled.PaginationLink
+              onClick={() => handleChangePageNumber(data.currentPage + 1)}
+            >
+              Next
+            </Styled.PaginationLink>
+          )}
+        </Styled.Pagination>
+      </Styled.PaginationWrapper>
     </>
   );
 };

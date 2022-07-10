@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 import { Form, Formik } from "formik";
-import _cloneDeep from "lodash/cloneDeep";
-import _map from "lodash/map";
 import { useNavigate } from "react-router-dom";
 import { usePages, useSystem } from "../../../../hooks";
 import { ApplicationRoutes } from "../../../../types";
@@ -10,7 +8,6 @@ import * as Forms from "../../../../paper/forms/block/forms.styles";
 
 import {
   SelectField,
-  Textarea,
   TextField
 } from "../../../../paper/forms/block/blockFormFields";
 interface IPageState {
